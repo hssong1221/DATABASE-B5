@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <%
+	String num = request.getParameter("idx");
 	ResultSet rs = null;
 	Connection conn=null;
 	String driver = "oracle.jdbc.driver.OracleDriver";
@@ -21,43 +22,25 @@
 	    
 	    Statement stmt = conn.createStatement();        
 	    
-        String sql = "select * from board order by idx desc";
+        String sql = "select * from board where idx = " + num;
  
         rs = stmt.executeQuery(sql);
+        while(rs.next()){
 %>
 <body>
-	<h1>게시글 리스트</h1>
-	<table>
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>날짜</th>
-			<th>조회수</th>
-		</tr>
+	<h1>게시글 조회</h1>
+	<p>번호 : <%=rs.getString("idx")%></p>
+	<p>작성자 : <%=rs.getString("writer")%></p>
+	<p>날짜 : <%=rs.getString("regdate")%></p>
+	<p>조회수 : <%=rs.getString("count")%></p>
+	<h2>제목  : <%=rs.getString("title")%></h2>
+	<p><%=rs.getString("content")%></p><br/>
+	<a href="index.jsp">목록으로</a>
+	<a href="delete.jsp?idx=<%=rs.getString("idx")%>">게시글삭제</a>
+	
 
 <%
-	while(rs.next()){
-		 
-	    out.print("<tr>");
-	
-	    out.print("<td>" + rs.getString(1) + "</td>");
-	
-	    out.print("<td><a href = 'content.jsp?idx="+ rs.getString(1)+"'>" + rs.getString(2) + "</a></td>");
-	
-	    out.print("<td>" + rs.getString(3) + "</td>");
-	
-	    out.print("<td>" + rs.getString(4) + "</td>");
-	
-	    out.print("<td>" + rs.getString(5) + "</td>");
-	
-	    out.print("</tr>");
-	
-	}
-%>
-	</table>
-	<a href ="write.jsp">글쓰기</a>
-<%
+        }
 		conn.close();
 	    
 	}catch(Exception e){

@@ -1,26 +1,45 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>DBì™€ WEB ì—°ë™</title>
-		<link rel="stylesheet" type="text/css" href="board.css">
-		<script src="formcheck.js"></script>
-	</head>
-	<body>
-		<h1>ê²Œì‹œíŒ</h1>
-		<form action="index.jsp" method="post" onsubmit="return formCheck();">
-			ì œëª© :
-			<input type="text" name="title"/><br />
-			ì‘ì„±ì :
-			<input type="text" name="writer"/><br />
-			ê¸€ ë‚´ìš© : 
-			<textarea rows="10" cols="20" name="content"></textarea><br / >
-			ë‚ ì§œ : 
-			<input type="text" name="date"/><br />
-			<input type="submit" />
-		</form>
-		
-	</body>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action = "insert.jsp" method = "post" onsubmit = "return formCheck();">
+		title : <input type = "text" name = "title"/><br/>
+		writer : <input type = "text" name = "writer"/><br/>
+		content : <textarea rows="10" cols="20" name = "content"></textarea><br/>
+		<input type = "submit"/>
+	</form>
+	<script> // ÀÚ¹Ù½ºÅ©¸³Æ®ÅÂ±×
+		function formCheck(){
+			var title = document.forms[0].title.value;
+			var writer = document.forms[0].writer.value;
+			var content = document.forms[0].content.value;
+			
+			if (title == null || title == ""){
+				alert('Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä');
+				document.forms[0].title.focus(); //ÇØ´çÅÂ±×¿¡ Æ÷Ä¿½º¸¦ÁÜ
+				return false;
+			}
+			if (writer == null || writer == ""){
+				alert('ÀÛ¼ºÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä');
+				document.forms[0].writer.focus(); //ÇØ´çÅÂ±×¿¡ Æ÷Ä¿½º¸¦ÁÜ
+				return false;
+			}
+			if (content == null || content == ""){
+				alert('³»¿ë¸¦ ÀÔ·ÂÇÏ¼¼¿ä');
+				document.forms[0].content.focus(); //ÇØ´çÅÂ±×¿¡ Æ÷Ä¿½º¸¦ÁÜ
+				return false;
+			}
+
+			if(!((writer.match(/^(\w+)@(\w+)[.](\w+)$/ig)) || (writer.match(/^(\w+)@(\w+)[.](\w+)[.](\w+)$/ig)))){
+				alert("ÀÌ¸ŞÀÏ Çü½ÄÀÌ ¸ÂÁö ¾Ê½À´Ï´Ù");
+				return false;
+			}
+		}
+	</script>
+</body>
 </html>

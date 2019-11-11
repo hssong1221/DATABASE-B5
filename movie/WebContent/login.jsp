@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>�� ���׸� - �α���</title>
+<meta charset="UTF-8">
+<title>콱 씨네마 - 로그인</title>
 </head>
 <body>
 	<% session.invalidate(); %>
@@ -13,32 +13,32 @@
 		<table border="1px">
 			<tr>
 				<td colspan="2" align="center">
-					<h1>�α��� ������</h1>
+					<h1>로그인 페이지</h1>
 				</td>
 			</tr>
 
 			<tr>
-				<td>���̵� :</td>
+				<td>아이디 :</td>
 				<td>
 				<input type="text" id="my_id" name="my_id" 
-				value="���̵�" onfocus="this.value=''" required><!-- required�� �ʼ��׸� -->
+				value="아이디" onfocus="this.value=''" required><!-- required는 필수항목 -->
 				</td>
 			</tr>
 
 			<tr>
-				<td>��й�ȣ :</td>
+				<td>비밀번호 :</td>
 				<td>
-				<input type="text" id="my_pwd" name="my_pwd" value="��й�ȣ"
+				<input type="text" id="my_pwd" name="my_pwd" value="비밀번호"
 					onfocus="this.value='', this.type='password'" required>
 					</td>
 			</tr>
 
 			<tr>
 				<td colspan="2">
-				<input type="submit" value="�α���">
+				<input type="submit" value="로그인">
 					</form>
 					<form action="join.jsp">
-						<input type="submit" value="ȸ������">
+						<input type="submit" value="회원가입">
 					</form></td>
 			</tr>
 		</table>

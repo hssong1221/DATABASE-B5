@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
 <%@ page import="javax.naming.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>È¸¿ø°¡ÀÔÈÄ db¿¡ ÀúÀå</title>
+<meta charset="UTF-8">
+<title>íšŒì›ê°€ì…í›„ dbì— ì €ì¥</title>
 </head>
 <body>
 	<% request.setCharacterEncoding("UTF-8");
@@ -27,28 +27,28 @@
 			+ "'" + num1 + "'," + "'" + num2 + "'," + "'" + phonenum + "'," + 0 + "," 
 			+ "'" + name + "'," + "'" + mail + "')";
 	try {
-		System.out.println("-------------Æ®¶óÀÌ------------------");
-		//context.xml ºÒ·¯¿À±â
+		System.out.println("-------------íŠ¸ë¼ì´------------------");
+		//context.xml ë¶ˆëŸ¬ì˜¤ê¸°
 		Context init = new InitialContext();
-		//connection pool¿¡¼­ ¼³Á¤µÈ °æ·Î, java °æ·Î¿¡ µé¾îÀÖ´Â context.xmlÀÇ nameÀÎ jdbc/OracleDBÀÇ °æ·Î¸¦ °¡Á®¿È
+		//connection poolì—ì„œ ì„¤ì •ëœ ê²½ë¡œ, java ê²½ë¡œì— ë“¤ì–´ìˆëŠ” context.xmlì˜ nameì¸ jdbc/OracleDBì˜ ê²½ë¡œë¥¼ ê°€ì ¸ì˜´
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
-		//³» db °æ·Î¸¦ °¡Á®¿Í¼­ Á¢¼ÓÇÔ
+		//ë‚´ db ê²½ë¡œë¥¼ ê°€ì ¸ì™€ì„œ ì ‘ì†í•¨
 		conn = ds.getConnection();
-		//db¿¡ sql¹® º¸³»±â
+		//dbì— sqlë¬¸ ë³´ë‚´ê¸°
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		//db ¾÷µ¥ÀÌÆ®
+		//db ì—…ë°ì´íŠ¸
 		stmt.executeUpdate();
 
-		System.out.println("-------------¿¬°á¿Ï·á------------------");
-		out.println("<h3>¿¬°áµÇ¾ú½À´Ï´Ù.</h3>");
+		System.out.println("-------------ì—°ê²°ì™„ë£Œ------------------");
+		out.println("<h3>ì—°ê²°ë˜ì—ˆìŠµë‹ˆë‹¤.</h3>");
 	} catch (Exception e) {
-		out.println("<h3>¿¬°á¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.</h3>");
+		out.println("<h3>ì—°ê²°ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.</h3>");
 		e.printStackTrace();
 	}finally{
 		conn.close();
 	}
-	System.out.println("-------------¸®´ÙÀÌ·ºÆ®------------------");
-	//db¿¡ µ¥ÀÌÅÍ¸¦ ÀüºÎ ³ÖÀ¸¸é main È­¸éÀ¸·Î ÀÌµ¿
+	System.out.println("-------------ë¦¬ë‹¤ì´ë ‰íŠ¸------------------");
+	//dbì— ë°ì´í„°ë¥¼ ì „ë¶€ ë„£ìœ¼ë©´ main í™”ë©´ìœ¼ë¡œ ì´ë™
 	response.sendRedirect("main.jsp");
 %>
 </body>

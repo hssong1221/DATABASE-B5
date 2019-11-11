@@ -1,14 +1,14 @@
 <%@page import="java.sql.*"%>
 <%@page import="java.util.regex.Pattern"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="javax.sql.*"%>
 <%@ page import="javax.naming.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Äã ¾¾³×¸¶</title>
+<meta charset="UTF-8">
+<title>ì½± ì”¨ë„¤ë§ˆ</title>
 </head>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -26,21 +26,21 @@
 			ResultSet rs = stmt.executeQuery();
 			%>
 			
-			<h1>°ü¸®ÀÚ·Î ·Î±×ÀÎ ÇÏ¼Ì½À´Ï´Ù.</h1><br/>
-			<a href="admin.jsp">¿µÈ­°ü °ü¸® </a>
-			<a href="login.jsp">·Î±×¾Æ¿ô</a>
+			<h1>ê´€ë¦¬ìžë¡œ ë¡œê·¸ì¸ í•˜ì…¨ìŠµë‹ˆë‹¤.</h1><br/>
+			<a href="admin.jsp">ì˜í™”ê´€ ê´€ë¦¬ </a>
+			<a href="login.jsp">ë¡œê·¸ì•„ì›ƒ</a>
 			
 			<%
 			rs.close();
 		}else{
-			//»ç¿ëÀÚ ¸ðµå ÀÏ¶§ ¿ÀÁ÷ »ç¿ëÀÚ °³ÀÎÀÇ Á¤º¸¸¸ °¡Á®¿Ã ¼ö ÀÖ´Ù.
+			//ì‚¬ìš©ìž ëª¨ë“œ ì¼ë•Œ ì˜¤ì§ ì‚¬ìš©ìž ê°œì¸ì˜ ì •ë³´ë§Œ ê°€ì ¸ì˜¬ ìˆ˜ ìžˆë‹¤.
 			String sql2 = "SELECT * FROM client WHERE client_id='"+id+"'";
 			PreparedStatement stmt = conn.prepareStatement(sql2);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){%>
-				<h2><%= rs.getString("name") %> ´ÔÀÌ ·Î±×ÀÎ ÇÏ¼Ì½À´Ï´Ù.</h2><br/>
-				<a href="output.jsp">³» Á¤º¸ º¸·¯°¡±â</a>
-				<a href="login.jsp">·Î±×¾Æ¿ô</a><br/>
+				<h2><%= rs.getString("name") %> ë‹˜ì´ ë¡œê·¸ì¸ í•˜ì…¨ìŠµë‹ˆë‹¤.</h2><br/>
+				<a href="output.jsp">ë‚´ ì •ë³´ ë³´ëŸ¬ê°€ê¸°</a>
+				<a href="login.jsp">ë¡œê·¸ì•„ì›ƒ</a><br/>
 <%
 				}
 			String sql3 = "select * from movie";
@@ -51,14 +51,14 @@
 			<body>
 				<br/>
 				<a href ="m_info.jsp"><img width = "20%" src="image\<%=rs.getString("movie_id")%>.jpg"/></a>
-				<strong>¿¹¸ÅÀ² <%=rs.getString("booking_rate")%></strong>
-				<a href = "ticketing.jsp?id=<%=rs.getString("movie_id")%>">¹Ù·Î¿¹¸Å</a>
+				<strong>ì˜ˆë§¤ìœ¨ <%=rs.getString("booking_rate")%></strong>
+				<a href = "ticketing.jsp?id=<%=rs.getString("movie_id")%>">ë°”ë¡œì˜ˆë§¤</a>
 <%}
 			rs.close();
 			}
 	    
 	}catch(Exception e){
-	    out.print("¿¬°á¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.");
+	    out.print("ì—°ê²°ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 	    e.printStackTrace();
 	}
 	finally{

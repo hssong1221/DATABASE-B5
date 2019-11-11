@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
 <%@ page import="javax.naming.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>·Î±×ÀÎ Á¤º¸¸¦ db µ¥ÀÌÅÍ¿Í ºñ±³ÇÏ±â</title>
+<meta charset="UTF-8">
+<title>ë¡œê·¸ì¸ ì •ë³´ë¥¼ db ë°ì´í„°ì™€ ë¹„êµí•˜ê¸°</title>
 </head>
 <body>
 <% 		
@@ -15,33 +15,33 @@
 	String id = (String) request.getParameter("my_id");
 	String pwd = (String) request.getParameter("my_pwd");
 
-	//¼¼¼Ç ½ºÄÚÇÁ¿¡ ³» id Á¤º¸ ³Ö¾î¼­ session¿¡ µî·Ï
+	//ì„¸ì…˜ ìŠ¤ì½”í”„ì— ë‚´ id ì •ë³´ ë„£ì–´ì„œ sessionì— ë“±ë¡
 	request.getSession().setAttribute("id", id);
 
-	//db¿¡ Á¢¼ÓÇÒ °´Ã¼ ¸¸µé±â
+	//dbì— ì ‘ì†í•  ê°ì²´ ë§Œë“¤ê¸°
 	Connection conn = null;
-	//·Î±×ÀÎÇÑ µ¥ÀÌÅÍ°¡ db¾È¿¡ ÀÖ´Â µ¥ÀÌÅÍÀÎÁö Á¶È¸ÇÒ Äõ¸®¹®
+	//ë¡œê·¸ì¸í•œ ë°ì´í„°ê°€ dbì•ˆì— ìžˆëŠ” ë°ì´í„°ì¸ì§€ ì¡°íšŒí•  ì¿¼ë¦¬ë¬¸
 	String sql = "SELECT * FROM client WHERE client_id='" + id + "'";
 	
 	
 	try {
-		System.out.println("-------------Æ®¶óÀÌ------------------");
-		//context.xml ºÒ·¯¿À±â
+		System.out.println("-------------íŠ¸ë¼ì´------------------");
+		//context.xml ë¶ˆëŸ¬ì˜¤ê¸°
 		Context init = new InitialContext();
-		//connection pool¿¡¼­ ¼³Á¤µÈ °æ·Î, java °æ·Î¿¡ µé¾îÀÖ´Â context.xmlÀÇ nameÀÎ jdbc/OracleDBÀÇ °æ·Î¸¦ °¡Á®¿È
+		//connection poolì—ì„œ ì„¤ì •ëœ ê²½ë¡œ, java ê²½ë¡œì— ë“¤ì–´ìžˆëŠ” context.xmlì˜ nameì¸ jdbc/OracleDBì˜ ê²½ë¡œë¥¼ ê°€ì ¸ì˜´
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
-		//³» db °æ·Î¸¦ °¡Á®¿Í¼­ Á¢¼ÓÇÔ
+		//ë‚´ db ê²½ë¡œë¥¼ ê°€ì ¸ì™€ì„œ ì ‘ì†í•¨
 		conn = ds.getConnection();
-		//Äõ¸®¹®À» db¿¡ º¸³¿
+		//ì¿¼ë¦¬ë¬¸ì„ dbì— ë³´ëƒ„
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		//db ¾÷µ¥ÀÌÆ®
+		//db ì—…ë°ì´íŠ¸
 		stmt.executeUpdate();
-		//°ª ¹Þ¾Æ¿Ã¼ö ÀÖ´Â °´Ã¼ ¸¸µé±â
+		//ê°’ ë°›ì•„ì˜¬ìˆ˜ ìžˆëŠ” ê°ì²´ ë§Œë“¤ê¸°
 		ResultSet rs = stmt.executeQuery();
 
-		//¸¸¾à db¾È¿¡ °ªÀÌ µé¾î ÀÖÀ»¶§
+		//ë§Œì•½ dbì•ˆì— ê°’ì´ ë“¤ì–´ ìžˆì„ë•Œ
 		if (rs.next()) {
-			//·Î±×ÀÎÆû¿¡ ÀÔ·ÂÇÑ id¿Í ºñ¹Ð¹øÈ£°¡ db¾È¿¡ ÀÖ´Â id¿Í ºñ¹Ð¹øÈ£¿Í ÀÏÄ¡ÇÒ¶§ ¸ÞÀÎ ÆäÀÌÁö·Î ÀÌµ¿
+			//ë¡œê·¸ì¸í¼ì— ìž…ë ¥í•œ idì™€ ë¹„ë°€ë²ˆí˜¸ê°€ dbì•ˆì— ìžˆëŠ” idì™€ ë¹„ë°€ë²ˆí˜¸ì™€ ì¼ì¹˜í• ë•Œ ë©”ì¸ íŽ˜ì´ì§€ë¡œ ì´ë™
 			if (id.equals(rs.getString("client_id")) == true & pwd.equals(rs.getString("client_pwd")) == true) {
 				rs.close();
 				response.sendRedirect("main.jsp");
@@ -49,30 +49,30 @@
 				rs.close();
 %>
 				<script>
-					alert("¾ÆÀÌµð³ª ºñ¹Ð¹øÈ£°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
+					alert("ì•„ì´ë””ë‚˜ ë¹„ë°€ë²ˆí˜¸ê°€ ìž˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.");
 					history.back();
 				</script>
 <%
 			}
-		} else {//¸¸¾à db¾È¿¡ °ªÀÌ ¾øÀ»¶§
+		} else {//ë§Œì•½ dbì•ˆì— ê°’ì´ ì—†ì„ë•Œ
 			rs.close();
 %>
 <script>
-	alert("¾ÆÀÌµð³ª ºñ¹Ð¹øÈ£°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
+	alert("ì•„ì´ë””ë‚˜ ë¹„ë°€ë²ˆí˜¸ê°€ ìž˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	history.back();
 </script>
 <%
 	}
 
-		System.out.println("-------------¿¬°á¿Ï·á------------------");
-		out.println("<h3>¿¬°áµÇ¾ú½À´Ï´Ù.</h3>");
+		System.out.println("-------------ì—°ê²°ì™„ë£Œ------------------");
+		out.println("<h3>ì—°ê²°ë˜ì—ˆìŠµë‹ˆë‹¤.</h3>");
 	} catch (Exception e) {
-		out.println("<h3>¿¬°á¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.</h3>");
+		out.println("<h3>ì—°ê²°ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.</h3>");
 		e.printStackTrace();
 	}finally{
 		conn.close();
 	}
-	System.out.println("-------------¸®´ÙÀÌ·ºÆ®--------------------");
+	System.out.println("-------------ë¦¬ë‹¤ì´ë ‰íŠ¸--------------------");
 %>
 </body>
 </html>

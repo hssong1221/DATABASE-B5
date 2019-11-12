@@ -19,6 +19,8 @@
 	DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 	conn = ds.getConnection();
 	
+	String moviepage = "1";
+	
 	try{
 		if(id.equals(admin)){
 			String sql1 = "SELECT * FROM client";
@@ -28,7 +30,7 @@
 			
 			<h1>관리자로 로그인 하셨습니다.</h1><br/>
 			<a href="admin.jsp">영화관 관리 </a>
-			<a href="login.jsp">로그아웃</a>
+			<a href="index.jsp">로그아웃</a>
 			
 			<%
 			rs.close();
@@ -40,7 +42,8 @@
 			while(rs.next()){%>
 				<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
 				<a href="output.jsp">내 정보 보러가기</a>
-				<a href="login.jsp">로그아웃</a><br/>
+				<a href="index.jsp">로그아웃</a><br/><br/>
+				<a href = "ticketing.jsp">예매</a><br/>
 <%
 				}
 			String sql3 = "select * from movie";
@@ -50,13 +53,14 @@
 %>
 			<body>
 				<br/>
-				<a href ="m_info.jsp"><img width = "20%" src="image\<%=rs.getString("movie_id")%>.jpg"/></a>
-				<strong>예매율 <%=rs.getString("booking_rate")%></strong>
-				<a href = "ticketing.jsp?id=<%=rs.getString("movie_id")%>">바로예매</a>
+				<a href ="m_info.jsp?moviepage=<%= rs.getString("movie_id")%>"><img width = "20%" src="image\<%=rs.getString("movie_id")%>.jpg"/></a>
+				<strong><%=rs.getString("title")%></strong>
+				예매율 <%=rs.getString("booking_rate")%>
 <%}
 			rs.close();
 			}
-	    
+			
+
 	}catch(Exception e){
 	    out.print("연결에 실패하였습니다.");
 	    e.printStackTrace();

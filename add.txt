@@ -9,3 +9,19 @@ name varchar2(40) not null,
 address varchar2(40) not null,
 PRIMARY KEY(client_id)
 );
+
+CREATE TABLE movie(
+title varchar2(40) not null,
+director varchar2(40) not null,
+actor varchar2(40) not null,
+grade varchar2(40) not null,
+gerne varchar2(40) not null,
+rating float not null,
+booking_rate float not null,
+run_time number not null,
+plot clob not null,
+movie_id number not null,
+PRIMARY KEY(movie_id)
+);
+
+commit;

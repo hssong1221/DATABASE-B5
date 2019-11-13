@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>ฟนพเ มคบธ dbฟก ภ๚ภๅ</title>
+<title>ยฟยนยพร  รยคยบยธ dbยฟยก ร€รบร€รฅ</title>
 </head>
 <body>
 <%

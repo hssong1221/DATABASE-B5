@@ -56,10 +56,15 @@
 					<p class='gerne'><%=rs.getString("gerne") %></p>
 
 				</div>
-				
+
+  				<br />
+
+ 
+  	<%	} 
+  	%>		 	
 			
 				
-	<%	} %>
+
 				<hr class='footerhr'/>
 					<div class='footer'> <p class='footertext'>Made by B-5</p> </div>
 	<% 

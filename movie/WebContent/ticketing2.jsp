@@ -37,7 +37,7 @@
 		rs = stmt.executeQuery();
 		
 		while(rs.next()){%>
-		<%= rs.getString("theater_num")%> : <a href = "seat.jsp?date=<%=date%>&movie_id=<%=movie_id%>&start_time=<%= rs.getString("start_time")%>&theater_num=<%= rs.getString("theater_num")%>"><%= rs.getString("start_time")%></a><br/>
+		<%= rs.getString("theater_num")%> : <a href = "seat.jsp"><%= rs.getString("start_time")%></a><br/>
 	<%}
 		
 

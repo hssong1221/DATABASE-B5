@@ -1,5 +1,7 @@
 .logodiv{
 	text-align:center;
+	background-image: url('dblogo.png');
+	background-repeat: no-repeat;
 }
 .logo{
 	width:30%;
@@ -15,7 +17,7 @@ body{
 	font-size:20px;
 	float:right;
 }
-.btn{
+.menu{
 	display:block;
 }
 

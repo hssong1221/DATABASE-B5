@@ -1,0 +1,28 @@
+.logodiv{
+	text-align:center;
+	background-image: url('dblogo.png');
+	background-repeat: no-repeat;
+}
+.logo{
+	width:30%;
+	height:50px;
+	margin-left :auto;
+	margin-right:auto;
+	clear:both;
+}
+
+
+
+.footer{
+    text-align: center;
+    background-color:gray;
+    clear:both;
+    margin-top:auto;
+}
+.footerhr{
+	clear:both;
+	border: black 1px solid ;
+}
+.footertext{
+	
+}

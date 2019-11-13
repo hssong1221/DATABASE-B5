@@ -10,6 +10,7 @@
 		<meta charset="UTF-8">
 		<title>콱 씨네마</title>
 		<link href="./style/index.css" type="text/css" rel="stylesheet" />
+		<link href="./style/footer.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body>
 	<%
@@ -30,7 +31,7 @@
 			String sql = "select * from movie";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			out.println("<div class='btn'><a class='login' href = 'login.jsp'><button >로그인</button></a></div>");
+			out.println("<div class='menu'><a class='login' href = 'login.jsp'><button >로그인</button></a> <a class='login' href = 'join.jsp'><button >회원가입</button></a></div>");
 			while(rs.next()){
 	%>		
 				<div class='movie'>
@@ -56,7 +57,12 @@
 
 				</div>
 				
-	<%	}
+			
+				
+	<%	} %>
+				<hr class='footerhr'/>
+					<div class='footer'> <p class='footertext'>Made by B-5</p> </div>
+	<% 
 			rs.close();
 			
 		    

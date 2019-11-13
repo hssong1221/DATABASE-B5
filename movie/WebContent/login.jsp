@@ -5,17 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>콱 씨네마 - 로그인</title>
-<link href="./style/footer.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<% session.invalidate(); %>
-	
-	<div class='logodiv'>
-		<img  class='logo' src='./style/logo.png' />
-	</div>
-	<hr class='logohr'/>
-	
-	
 	
 	<form method="post" action="login3.jsp">
 		<table border="1px">
@@ -51,8 +43,5 @@
 			</tr>
 		</table>
 	</form>
-	
-	<hr class='footerhr'/>
-					<div class='footer'> <p class='footertext'>Made by B-5</p> </div>
 </body>
 </html>

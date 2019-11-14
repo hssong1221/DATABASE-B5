@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>¿¹¾à Á¤º¸ db¿¡ ÀúÀå</title>
+<title>콱씨네마 - 결제</title>
 </head>
 <body>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = (String)session.getAttribute("id");
-	
+
 	String date = request.getParameter("date");
 	String movie_id = request.getParameter("movie_id");
     String start_time = request.getParameter("start_time");

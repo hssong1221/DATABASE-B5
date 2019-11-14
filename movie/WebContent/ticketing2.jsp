@@ -20,9 +20,9 @@
 	conn = ds.getConnection();
 	String date = request.getParameter("date");
 	String movie_id = request.getParameter("movie_id");
-
+	
 	try{
-
+	
 		String sql2 = "SELECT * FROM client WHERE client_id='"+id+"'";
 		PreparedStatement stmt = conn.prepareStatement(sql2);
 		ResultSet rs = stmt.executeQuery();
@@ -31,19 +31,19 @@
 			<a href="output.jsp">내 정보 보러가기</a>
 			<a href="index.jsp">로그아웃</a><br/><br/>
 		<%}
-
+		
 		String sql3 = "SELECT theater_num, start_time FROM movie natural join schedule WHERE screening_date ='"+ date +"' and movie_id ='" + movie_id + "'";
 		stmt = conn.prepareStatement(sql3);
 		rs = stmt.executeQuery();
-
+		
 		while(rs.next()){%>
 		<%= rs.getString("theater_num")%> : <a href = "seat.jsp?date=<%=date%>&movie_id=<%=movie_id%>&start_time=<%= rs.getString("start_time")%>&theater_num=<%= rs.getString("theater_num")%>"><%= rs.getString("start_time")%></a><br/>
 	<%}
-
+		
 
 		rs.close();
-
-
+			
+			
 
 	}catch(Exception e){
 	    out.print("연결에 실패하였습니다.");
@@ -52,10 +52,10 @@
 	finally{
 		conn.close();
 	}
-
+			
 %>
 
 
-
+		
 </body>
 </html>

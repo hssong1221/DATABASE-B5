@@ -71,7 +71,7 @@
 			
 				
 
-				<div id=head></div>
+				<div id=footer></div>
 	<% 
 			rs.close();
 			

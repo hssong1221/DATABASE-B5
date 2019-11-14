@@ -56,7 +56,7 @@
 		
 	%>
 					<%=rs.getString("title") %></p> 
-					<p class='gerne'><%=rs.getString("gerne") %></p>
+					<p class='genre'><%=rs.getString("genre") %></p>
 
 				</div>
 

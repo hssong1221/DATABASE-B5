@@ -10,9 +10,16 @@
 		<meta charset="UTF-8">
 		<title>콱 씨네마</title>
 		<link href="./style/index.css" type="text/css" rel="stylesheet" />
-		<link href="./style/footer.css" type="text/css" rel="stylesheet" />
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready( function() {
+			$("#head").load("./style/head.html");
+			$("#footer").load("./style/footer.html");
+		});
+		</script>
 	</head>
 	<body>
+		<div id=head></div>
 	<%
 		session.invalidate();
 		request.setCharacterEncoding("UTF-8");
@@ -21,10 +28,7 @@
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 		conn = ds.getConnection();
 	%>
-	<div class='logodiv'>
-		<img  class='logo' src='./style/logo.png' />
-	</div>
-	<hr class='logohr'/>
+
 	<% 	
 		String moviepage = "1";
 		try{
@@ -40,14 +44,14 @@
 					<a href ="m_info.jsp?moviepage=<%= rs.getString("movie_id")%>"><img class='poster'  src="image\<%=rs.getString("movie_id")%>.jpg"/></a>
 					<p class='rating'><strong>예매율 : <%=rs.getString("booking_rate")%></strong></p>
 					<p class='title'>
-	<%				String age = rs.getString("grade");
-					if(age =="전체") { %>
+	<%				String age = rs.getString("grade");				
+					if(age.equals("전체")) { %>
 						<img class='age' src='./style/all.png'/>
 	<% 				}
-					else if( age =="12세"){ %>
+					else if( age.equals("12세")) { %>
 						<img class='age' src='./style/12.png' />
 	<% 				}
-					else if( age=="15세"){ %>
+					else if( age.equals("15세")) { %>
 						<img class='age' src='./style/15.png' />
 	<% 				}
 					else{									%>
@@ -67,8 +71,7 @@
 			
 				
 
-				<hr class='footerhr'/>
-					<div class='footer'> <p class='footertext'>Made by B-5</p> </div>
+				<div id=head></div>
 	<% 
 			rs.close();
 			

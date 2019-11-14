@@ -3,20 +3,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>콱 씨네마 - 로그인</title>
-<link href="./style/footer.css" type="text/css" rel="stylesheet" />
+	<meta charset="UTF-8">
+	<title>콱 씨네마 - 로그인</title>
+	<link href="./style/master.css" type="text/css" rel="stylesheet" />
+
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready( function() {
+		$("#head").load("./style/head.html");
+		$("#footer").load("./style/footer.html");
+	});
+	</script>
 </head>
 <body>
 	<% session.invalidate(); %>
-	
-	<div class='logodiv'>
-		<img  class='logo' src='./style/logo.png' />
-	</div>
-	<hr class='logohr'/>
-	
-	
-	
+	<div id="head" > </div>
 	<form method="post" action="login3.jsp">
 		<table border="1px">
 			<tr>
@@ -51,8 +52,8 @@
 			</tr>
 		</table>
 	</form>
+	<div id="footer" > </div>
+
 	
-	<hr class='footerhr'/>
-					<div class='footer'> <p class='footertext'>Made by B-5</p> </div>
 </body>
 </html>

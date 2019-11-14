@@ -150,3 +150,29 @@ function check(re,what,message){//정규화데이터,아이템 id,메세지
     what.value = "";
     what.focus();
 }
+
+function mval(){
+	var title = document.getElementById("TITLE");
+    var director = document.getElementById("DIRECROT");
+    var actor = document.getElementById("ACTOR");
+    var grade = document.getElementById("GRADE");
+    var genre = document.getElementById("GENRE");
+    var rating = document.getElementById("RATING");
+    var booking_rate = document.getElementById("BOOKING_RATE");
+    var run_time = document.getElementById("RUN_TIME");
+    var plot = document.getElementById("PLOT");
+    var movie_id = document.getElementById("MOVIE_ID");
+    
+    if(title.value == "")
+    {
+    	alert("didi");
+    	return false;
+   	}
+    if (((title.value) == "") || ((director.value) == "") || ((actor.value) == "") || ((grade.value) == "") || ((genre.value) == "") || ((rating.value) == "") || ((booking_rate.value) == "") || ((run_time.value) == "") || ((plot.value) == "") || ((movie_id.value) == ""))
+    {
+        alert("내용을 입력하지 않았습니다.");
+        title.focus();
+        return false;
+    } 
+    return true;
+}

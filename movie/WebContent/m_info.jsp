@@ -34,7 +34,7 @@
 			감독 : <%=rs.getString("director")%> <br/>
 			배우 : <%=rs.getString("actor")%> <br/>
 			상영등급 : <%=rs.getString("grade")%> <br/>
-			장르 : <%=rs.getString("gerne")%> <br/>
+			장르 : <%=rs.getString("genre")%> <br/>
 			평정 : <%=rs.getString("rating")%> <br/>
 			예매율 : <%=rs.getString("booking_rate")%> <br/>
 			상영시간 : <%=rs.getString("run_time")%> <br/>

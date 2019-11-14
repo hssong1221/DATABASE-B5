@@ -33,6 +33,7 @@
 	font-size:15px;
 }
 .movie{
+	min-height:530px;
 	width:250px;
 	overflow:hidden;
 	margin:10px;

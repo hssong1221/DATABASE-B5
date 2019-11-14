@@ -13,7 +13,6 @@
 	<body>
 	<% 
 		request.setCharacterEncoding("UTF-8");
-		session.invalidate();
 		Connection conn=null;
 		Context init = new InitialContext();
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");

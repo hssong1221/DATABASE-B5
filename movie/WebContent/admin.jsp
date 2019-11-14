@@ -15,7 +15,6 @@
 	</head>
 	<body>
 	<%
-		session.invalidate();
 		request.setCharacterEncoding("UTF-8");
 		Connection conn=null;
 		Context init = new InitialContext();
@@ -50,6 +49,7 @@
 			<input placeholder="MOVIE_ID" type="text" name="MOVIE_ID" /><br/>
 			<input type="submit" value="등록" />
 		</form>	
+			<a href = "main.jsp">메인화면</a>
 		<%	rs.close();  
 		}catch(Exception e){
 		    out.print("연결에 실패하였습니다.");

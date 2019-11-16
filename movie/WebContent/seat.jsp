@@ -4,7 +4,11 @@
 <%@page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
 <%@ page import="javax.naming.*"%>
+<%@page import="java.util.*"%>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = (String)session.getAttribute("id");
@@ -16,21 +20,33 @@
 	String movie_id = request.getParameter("movie_id");
     String start_time = request.getParameter("start_time");
     String theater_num = request.getParameter("theater_num");
+    String schedule_id = null;
+    
+    try{
+    	String sql2 = "SELECT schedule_id FROM schedule WHERE screening_date ='"+date+"' and start_time = '"+ start_time + "' and movie_id = '" + movie_id + "' and theater_num = '" + theater_num + "'";
+    	PreparedStatement stmt = conn.prepareStatement(sql2);
+    	ResultSet rs = stmt.executeQuery();
+    	while(rs.next()){
+    		schedule_id = rs.getString("schedule_id");
+    	}
+    	 rs.close();
+    	 
+
+    }catch(Exception e){
+        out.print("연결에 실패하였습니다.");
+        e.printStackTrace();
+    }
+    finally{
+    }
 	
-	int row = 15;
-    int col = 15;
+	int row = 10;
+    int col = 10;
     int w=30+col*30+col/5*20;
     if(col%5==0)
     	w-=20;
     
     
 %>    
-
-    
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
 
 <head>
 
@@ -42,13 +58,13 @@
 
 <style type="text/css">
 *{
-	padding: 0px; margin: 0px; font-size: 9pt;
+	padding: 0px; margin: 0px; 
 }
 td {
 	font-size: 9pt;font-family: 돋움;
 }
 </style>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 function send() {
 	var f=document.forms[0];
@@ -67,20 +83,96 @@ function send() {
     
 	f.submit();
 }
-</script>
 
+
+$(document).ready(function(){
+
+	// .check 클래스 중 어떤 원소가 체크되었을 때 발생하는 이벤트
+
+	$(".check").click(function(){  // 여기서 .click은 체크박스의 체크를 뜻한다.
+
+		var str = "";  // 여러개가 눌렸을 때 전부 출력이 될 수 있게 하나의 객체에 담는다.
+
+		$(".check").each(function(){  // .each()는 forEach를 뜻한다.
+
+			if($(this).is(":checked"))  // ":checked"를 이용하여 체크가 되어있는지 아닌지 확인한다.
+
+				str += $(this).val() + " ";  // 체크된 객체를 str에 저장한다.
+
+		});
+
+		$("#multiPrint").text(str);  // #multiPrint에 체크된 원소를 출력한다.
+
+	});
+
+
+	$("#allCheck").click(function(){
+		$(".check").removeAttr("checked")  // 체크가 안 되어있으면 "checked"를 제거한다.
+
+		 // 이 때 체크가 되어있는 원소는 안 바뀐다. 어디까지나 체크가 안 된 것들에 대해서만 효과가 있다.
+
+	var str = "";  // 여러개가 눌렸을 때 전부 출력이 될 수 있게 하나의 객체에 담는다.
+
+	$(".check").each(function(){  // .each()는 forEach를 뜻한다.
+
+		if($(this).is(":checked"))  // ":checked"를 이용하여 체크가 되어있는지 아닌지 확인한다.
+
+			str += $(this).val() + " ";  // 체크된 객체를 str에 저장한다.
+
+	});
+
+	$("#multiPrint").text(str);  // #multiPrint에 체크된 원소를 출력한다.
+
+	});
+
+});
+
+function seat(seatnum) {
+   	var f=document.forms[0];
+   	var row="<%=row%>";
+   	var col="<%=col%>";
+   	for(var i=0; i<row*col; i++) {
+   		if(f.ch[i].value == seatnum){
+   			f.ch[i].disabled = true;
+   		}	
+   	}
+   	return;
+   }
+</script>
 
 
 </head>
 
 <body>
+<% 
+try{
+	String sql2 = "SELECT * FROM client WHERE client_id='"+id+"'";
+	PreparedStatement stmt = conn.prepareStatement(sql2);
+	ResultSet rs = stmt.executeQuery();
+	while(rs.next()){%>
+		<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
+		<a href="output.jsp">내 정보 보러가기</a>
+		<a href="index.jsp">로그아웃</a><br/><br/>
+	<%}
+	
+	rs.close();
+		
+		
 
+}catch(Exception e){
+    out.print("연결에 실패하였습니다.");
+    e.printStackTrace();
+}
+finally{
+}
+%>
 <br/><br/>
 
 
 
-<form action="ticketing3.jsp?date=<%=date%>&movie_id=<%=movie_id%>&start_time=<%=start_time%>&theater_num=<%=theater_num%>" method="post">
-
+<form action="payment.jsp?schedule_id=<%=schedule_id%>" method="post">
+<h3><%= theater_num %></h3><br/>
+선택한 자리 : <span id="multiPrint"></span><br/>
 <table width="<%=w%>">
 
 <tr height="30">
@@ -108,7 +200,7 @@ function send() {
 				out.println("<td width='20' bgcolor='green'>&nbsp;</td>");
 			out.print("<td width='30' align='center'>");
 			s=(char)(i+64)+":"+j;
-			out.print("<input type='checkbox' name='ch' value='"+
+			out.print("<input type='checkbox' class='check' name='ch' value='"+
 			    s+"'>");
 			out.println("</td>");
 		}
@@ -117,28 +209,16 @@ function send() {
 %>
 
 </table>
-<script language="JavaScript">
-    function seat(seatnum) {
-    	var f=document.forms[0];
-    	var row="<%=row%>";
-    	var col="<%=col%>";
-    	for(var i=0; i<row*col; i++) {
-    		if(f.ch[i].value == seatnum){
-    			f.ch[i].disabled = true;
-    		}	
-    	}
-    	return;
-    }
-</script>
+
 <%
 try{
-	String sql = "SELECT * FROM seat WHERE theater_num ='"+ theater_num +"' and status = 0";
+	String sql = "SELECT * FROM seat_schedule natural join seat WHERE schedule_id = '" + schedule_id + "' and status = 1";
 	PreparedStatement stmt = conn.prepareStatement(sql);
 	ResultSet rs = stmt.executeQuery();
 	
 	while(rs.next()){%>
 		<script>
-		var i = "<%=rs.getString("seat_num")%>";
+		var i = "<%=rs.getString("seat_name")%>";
 		seat(i);
 		</script>
 			

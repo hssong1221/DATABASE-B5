@@ -60,6 +60,7 @@
 		
 		rs.close();%>
 			<h3>예매가 완료되었습니다.</h3><br/>
+			<%=(int)(total_price*0.1)%> 마일리지가  적립됐습니다. <br/>
 			<a href = "ticketing_list.jsp">예매내역</a>
 			<a href = "main.jsp">메인으로</a>
 	<% }catch(Exception e){

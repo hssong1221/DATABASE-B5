@@ -32,15 +32,20 @@
 			<a href="index.jsp">로그아웃</a><br/><br/>
 		<%}
 		
-		String sql3 = "SELECT theater_num, start_time FROM movie natural join schedule WHERE screening_date ='"+ date +"' and movie_id ='" + movie_id + "'";
+		String sql3 = "SELECT theater_num, start_time FROM movie natural join schedule WHERE screening_date ='"+ date +"' and movie_id ='" + movie_id + "' order by start_time";
 		stmt = conn.prepareStatement(sql3);
 		rs = stmt.executeQuery();
 		
-		while(rs.next()){%>
+ 	while(rs.next()){%>
 		<%= rs.getString("theater_num")%> : <a href = "seat.jsp?date=<%=date%>&movie_id=<%=movie_id%>&start_time=<%= rs.getString("start_time")%>&theater_num=<%= rs.getString("theater_num")%>"><%= rs.getString("start_time")%></a><br/>
-	<%}
+<%}
 		
-
+		String sql4 = "select sum(status) from seat_schedule natural join schedule where movie_id = '" + movie_id + "' and screening_date = '" + date + "' group by start_time order by start_time";
+		stmt = conn.prepareStatement(sql4);
+		rs = stmt.executeQuery();
+		while(rs.next()){%>
+			남은좌석 : <%=100-Integer.parseInt(rs.getString("sum(status)")) %> / 100 <br/>
+		<%}
 		rs.close();
 			
 			

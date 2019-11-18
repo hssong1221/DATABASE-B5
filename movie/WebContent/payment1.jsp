@@ -35,6 +35,7 @@
 		}
 		
 		rs.close();%>
+		결제 가격 : <%=total_price%> <br/>
 		<form action = "complete.jsp?schedule_id=<%=schedule_id%>&pay_method=<%=pay_method%>&total_price=<%=total_price%>" method = "POST">
 		<% if(pay_method.equals("신용카드")){%>
 			카드번호 : <input name = "card_num" type="text" placeholder = "카드번호"/>

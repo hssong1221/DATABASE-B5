@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>콱 씨네마 - 내 정보</title>
 </head>
 <body>
 <% 

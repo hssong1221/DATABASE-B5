@@ -42,6 +42,7 @@
 			while(rs.next()){%>
 				<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
 				<a href="output.jsp">내 정보 보러가기</a>
+				<a href ="ticketing_list.jsp">예매 내역</a>
 				<a href="index.jsp">로그아웃</a><br/><br/>
 				<a href = "ticketing.jsp">예매</a><br/>
 <%

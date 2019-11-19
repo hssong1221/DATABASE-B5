@@ -8,6 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>콱 씨네마 - 예매 내역</title>
+
+<script type="text/javascript">
+	function delchk(){
+	       return confirm("예매취소하시겠습니까?");
+	}
+</script>
+
 </head>
 <body>
 <% 
@@ -33,7 +40,7 @@ try{
 	}
 	
 	
-	String sql1 = "select ticketing_id, total_price, screening_date, title,theater_num,start_time from payment natural join ticketing natural join schedule natural join movie WHERE client_id='"+id+"' order by ticketing_id";
+	String sql1 = "select schedule_id, ticketing_id, total_price, screening_date, title,theater_num,start_time from payment natural join ticketing natural join schedule natural join movie WHERE client_id='"+id+"' order by ticketing_id";
 	stmt = conn.prepareStatement(sql1);
 	rs = stmt.executeQuery();
 %>
@@ -41,9 +48,9 @@ try{
 	
 	<h3>예매 내역</h3>
 <%	if(rs.next()){%>
-			예매번호   상영일  상영관  시작시간 영화제목  결제가격<br/>
+			좌석번호   상영관   상영일   시작시간  영화제목   결제가격   예매번호<br/>
 			<%do{%>
-				<%=rs.getString("ticketing_id")%>  <%=rs.getString("screening_date")%> <%=rs.getString("theater_num")%> <%=rs.getString("start_time")%> <%=rs.getString("title")%>  <%=rs.getString("total_price")+'원'%><br/>
+				<%=rs.getString("theater_num")%>   <%=rs.getString("screening_date")%>   <%=rs.getString("start_time")%>   <%=rs.getString("title")%>   <%=rs.getString("total_price")+'원'%>   <%=rs.getString("ticketing_id")%>   <a onclick="return delchk();" href="cancel.jsp?ticketing_id=<%=rs.getString("ticketing_id")%>&schedule_id=<%=rs.getString("schedule_id")%>">예매 취소</a><br/>
 			<% }while(rs.next());
 			}
 		else{

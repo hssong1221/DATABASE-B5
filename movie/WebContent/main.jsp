@@ -9,7 +9,19 @@
 <head>
 <meta charset="UTF-8">
 <title>콱 씨네마</title>
+<link href="./style/index.css" type="text/css" rel="stylesheet" />
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready( function() {
+			$("#head").load("./style/head.html");
+			$("#footer").load("./style/footer.html");
+		});
+		</script>
 </head>
+<div id=head></div>
+<body>
+
+
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = (String)session.getAttribute("id");
@@ -53,27 +65,54 @@
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){%>
 				<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
-				<a href="output.jsp">내 정보 보러가기</a>
-				<a href ="ticketing_list.jsp">예매 내역</a>
-				<a href="index.jsp">로그아웃</a><br/><br/>
-				<a href = "ticketing.jsp">예매</a><br/>
-<%
-				}
+				<div>
+				<a href="output.jsp"><button>내 정보 보러가기</button></a>
+				<a href ="ticketing_list.jsp"><button>예매 내역</button></a>
+				<a href="index.jsp"><button>로그아웃</button></a>
+				<a href = "ticketing.jsp"><button>예매</button></a><br/>
+				</div>
+<% 			}
 			String sql3 = "select * from movie";
 			stmt = conn.prepareStatement(sql3);
 			rs = stmt.executeQuery();
 			while(rs.next()){
 %>
-			<body>
-				<br/>
-				<a href ="m_info.jsp?moviepage=<%= rs.getString("movie_id")%>"><img width = "20%" src="image\<%=rs.getString("movie_id")%>.jpg"/></a>
-				<strong><%=rs.getString("title")%></strong>
-				예매율 <%=rs.getString("booking_rate")%>
-<%}
-			rs.close();
-			}
+			<div class='movie'>
+					<a href ="m_info.jsp?moviepage=<%= rs.getString("movie_id")%>"><img class='poster'  src="image\<%=rs.getString("movie_id")%>.jpg"/></a>
+					<p class='rating'><strong>예매율 : <%=rs.getString("booking_rate")%></strong></p>
+					<p class='title'>
+	<%				String age = rs.getString("grade");				
+					if(age.equals("전체")) { %>
+						<img class='age' src='./style/all.png'/>
+	<% 				}
+					else if( age.equals("12세")) { %>
+						<img class='age' src='./style/12.png' />
+	<% 				}
+					else if( age.equals("15세")) { %>
+						<img class='age' src='./style/15.png' />
+	<% 				}
+					else{									%>
+						<img class='age' src='./style/19.png' />
+	<%				} 
+		
+	%>
+					<%=rs.getString("title") %></p> 
+					<p class='genre'><%=rs.getString("genre") %></p>
+
+		</div>
+
+
+ 
+  	<%	} 
+  	%>		 	
 			
 
+				<div id=footer></div>
+<%
+			rs.close();
+			
+			
+		}
 	}catch(Exception e){
 	    out.print("연결에 실패하였습니다.");
 	    e.printStackTrace();

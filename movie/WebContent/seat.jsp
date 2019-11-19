@@ -47,7 +47,27 @@
     
     
 %>    
+<style>
+input[type=checkbox] + label{
+	display : inline-block;
+	margin : 10px;
+	float:left;
+	width:50px;
+	height:50px;
+	background-color : #666666;
+	border-radius:3px;
+}
+input[type=checkbox]:checked + label{
+ 	background-color : pink;
+ }
+input[type=checkbox]:disabled + label{
+ 	background-color : red;
+ }
+input[type=checkbox]{
+	display:none;
+}
 
+</style>
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -197,11 +217,12 @@ finally{
 		out.println("<td align='center'>"+(char)(i+64)+"</td>");
 		for(int j=1; j<=col; j++) {
 			if(j!=1 && j%5==1)
-				out.println("<td width='20' bgcolor='green'>&nbsp;</td>");
+				out.println("<td width='20' bgcolor='black'>&nbsp;</td>");
 			out.print("<td width='30' align='center'>");
 			s=(char)(i+64)+":"+j;
-			out.print("<input type='checkbox' class='check' name='ch' value='"+
+			out.print("<input type='checkbox' id = '" + s + "' class='check' name='ch' value='"+
 			    s+"'>");
+			out.print("<label for='" + s + "'></label>");
 			out.println("</td>");
 		}
 		out.println("</tr>");

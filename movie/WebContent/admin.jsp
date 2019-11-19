@@ -16,6 +16,7 @@
 	<body>
 	<nav>
 		<ul>
+		<br/>
 			<li><a href = #nowmovie> 현재 상영중인 영화</a></li>
 			<li><a href = #ctable> 고객 정보</a></li>
 			<li><a href = "#">일단 만들어 그리고 부숴</a></li>

@@ -63,6 +63,9 @@ input[type=checkbox]:checked + label{
 input[type=checkbox]:disabled + label{
  	background-color : red;
  }
+input[type=checkbox]:hover + label{
+ 	background-color : gray;
+ }
 input[type=checkbox]{
 	display:none;
 }

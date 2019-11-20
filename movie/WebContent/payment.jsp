@@ -46,6 +46,19 @@
 			stmt.executeUpdate();
 		}
 		
+		String sql2 = "SELECT * FROM schedule natural join movie WHERE schedule_id='"+schedule_id+"'";
+		stmt = conn.prepareStatement(sql2);
+		rs = stmt.executeQuery();
+		while(rs.next()){
+		%>
+			상영일 : <%=rs.getString("screening_date")%><br/> 
+			시작시간 : <%=rs.getString("start_time")%><br/>
+			상영관 : <%=rs.getString("theater_num")%><br/>
+			영화제목 : <%=rs.getString("title")%><br/>
+			
+		<%
+		
+		}
 		
 		rs.close();
 			
@@ -60,15 +73,15 @@
 	}
 	
 %>
-<br/><br/>
-결제 가격 : <%=total_price%> <br/>
+<br/>
 결제수단을 선택하세요 
 <form action = "payment1.jsp?schedule_id=<%=schedule_id%>&total_price=<%=total_price%>" method = "POST">
 <select name = "pay_method">
-	<option value = "신용카드" selected = selected>신용카드</option>
+	<option value = "신용카드" selected = "selected">신용카드</option>
 	<option value = "휴대폰결제">휴대폰결제</option>
 </select>
 <input type = "submit" value = "다음"/>
 </form>
+결제 가격 : <%=total_price%>
 </body>
 </html>

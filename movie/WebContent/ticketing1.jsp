@@ -29,14 +29,17 @@
 			<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
 			<a href="output.jsp">내 정보 보러가기</a>
 			<a href="index.jsp">로그아웃</a><br/><br/>
-		<%}
+		<%}%>
 		
-		String sql3 = "SELECT distinct title, movie_id FROM movie natural join schedule WHERE screening_date ='"+ date +"'";
+		
+		선택한 날짜 : <%=date%><br/>
+		
+<%		String sql3 = "SELECT distinct title, movie_id, title FROM movie natural join schedule WHERE screening_date ='"+ date +"'";
 		stmt = conn.prepareStatement(sql3);
 		rs = stmt.executeQuery();
 		if(rs.next()){
 			do{%>
-				<a href = ticketing2.jsp?movie_id=<%=rs.getString("movie_id")%>&date=<%=date%>><%= rs.getString("title")%></a><br/>	
+				<a href = 'ticketing2.jsp?movie_id=<%=rs.getString("movie_id")%>&date=<%=date%>&title=<%=rs.getString("title")%>'><%= rs.getString("title")%></a><br/>	
 			<% }while(rs.next());
 			}
 		else{

@@ -104,16 +104,16 @@
 
  
   	<%	} 
-  	%>		 	
+  		 	
 			
 
-				<div id=footer></div>
-<%
+
 			rs.close();
 			
 			
-		}
-	}catch(Exception e){
+		}%>
+		<div id=footer></div>
+<%	}catch(Exception e){
 	    out.print("연결에 실패하였습니다.");
 	    e.printStackTrace();
 	}

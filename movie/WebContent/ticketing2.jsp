@@ -20,7 +20,7 @@
 	conn = ds.getConnection();
 	String date = request.getParameter("date");
 	String movie_id = request.getParameter("movie_id");
-	
+	String title = request.getParameter("title"); 
 	try{
 	
 		String sql2 = "SELECT * FROM client WHERE client_id='"+id+"'";
@@ -30,15 +30,18 @@
 			<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
 			<a href="output.jsp">내 정보 보러가기</a>
 			<a href="index.jsp">로그아웃</a><br/><br/>
-		<%}
+		<%}%>
+
+		선택한 날짜 : <%=date%><br/>
+		선택한 영화 : <%=title%><br/><br/>
 		
-		String sql3 = "SELECT theater_num, start_time FROM movie natural join schedule WHERE screening_date ='"+ date +"' and movie_id ='" + movie_id + "' order by start_time";
+<%		String sql3 = "SELECT theater_num, start_time FROM movie natural join schedule WHERE screening_date ='"+ date +"' and movie_id ='" + movie_id + "' order by start_time";
 		stmt = conn.prepareStatement(sql3);
 		rs = stmt.executeQuery();
 		
- 	while(rs.next()){%>
-		<%= rs.getString("theater_num")%> : <a href = "seat.jsp?date=<%=date%>&movie_id=<%=movie_id%>&start_time=<%= rs.getString("start_time")%>&theater_num=<%= rs.getString("theater_num")%>"><%= rs.getString("start_time")%></a><br/>
-<%}
+	 	while(rs.next()){%>
+			<%= rs.getString("theater_num")%> : <a href = "seat.jsp?date=<%=date%>&movie_id=<%=movie_id%>&start_time=<%= rs.getString("start_time")%>&theater_num=<%= rs.getString("theater_num")%>"><%= rs.getString("start_time")%></a><br/>
+	<%}
 		
 		String sql4 = "select sum(status) from seat_schedule natural join schedule where movie_id = '" + movie_id + "' and screening_date = '" + date + "' group by start_time order by start_time";
 		stmt = conn.prepareStatement(sql4);

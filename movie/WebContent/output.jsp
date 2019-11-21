@@ -36,47 +36,17 @@ try{
 	
 	while(rs.next()){
 		%>
-		<div class="table">
-		<table width="100%" height="80" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#9999FF">
-	    <tr align="center">
-	        <td colspan="2" align="center" bgcolor="skyblue">
-	            <div style="font-weight: bold; font-size: 18px">회원 정보 조회
-	            </div></td>
-	    </tr>
-	    <tr>
-	        <td class="title">
-	            <div style="font-weight: bold;">아이디:
-	            </div></td>
-	        <td>&nbsp <%= rs.getString("client_id") %> </td>
-	    </tr>
-	    <tr>
-	        <td class="title" ><div style="font-weight: bold;">비밀번호:</div></td>
-	        <td>&nbsp <%= rs.getString("client_pwd") %> </td>
-	    </tr>
-	    <tr>
-	        <td class="title" ><div style="font-weight: bold;">메일주소:</div></td>
-	        <td>&nbsp <%= rs.getString("address") %></td>
-	    </tr>
-	    <tr>
-	        <td class="title" ><div style="font-weight: bold;">이름:</div></td>
-	        <td>&nbsp <%= rs.getString("name") %></td>
-	    </tr>
-	    <tr>
-	        <td class="title" ><div style="font-weight: bold;">주민등록번호:</div></td>
-	        <td>&nbsp<%= rs.getString("num1") %>- *******</td>
-	    </tr>
-	    <tr>
-	        <td class="title" ><div style="font-weight: bold;">휴대폰 번호:</div></td>
-	        <td>&nbsp<%= rs.getString("phone_num") %></td>
-	    </tr>
-	    <tr>
-	        <td class="title" ><div style="font-weight: bold;">마일리지:</div></td>
-	        <td>&nbsp<%= rs.getString("mileage") %></td>
-	    </tr>
-
-	        	
-
-		</table>
+		<div class="new">
+		<fieldset>
+            <legend>회원 정보 조회</legend>
+            <label><span>아이디<span class="required">*</span></span> <%= rs.getString("client_id") %></label>
+            <label><span>비밀번호<span class="required">*</span></span> <%= rs.getString("client_pwd") %></label>
+	        <label><span>메일주소<span class="required">*</span></span> <%= rs.getString("address") %></label>
+	        <label><span>이름<span class="required">*</span></span> <%= rs.getString("name") %></label>
+	        <label><span>주민등록번호<span class="required">*</span></span> <%= rs.getString("num1") %>- *******</label>
+	        <label><span>휴대폰번호<span class="required">*</span></span> <%= rs.getString("phone_num") %></label>
+	        <label><span>마일리지<span class="required">*</span></span> <%= rs.getString("mileage") %></label>
+	   </fieldset>
 		<div class="btn">
 	         <a href="update.jsp"><button class="btn1">수정</button></a>
 	         <a href="delete.jsp"><button class="btn1">회원탈퇴</button></a>

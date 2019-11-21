@@ -26,7 +26,7 @@
                     <img class='join-logo' src='./style/welcome.png' />
                 </div>
 
-				<fieldset><legend>Personal</legend>
+				<fieldset><legend>회원가입</legend>
 	                <label class="rowtext"><span>아이디<span class="required">*</span></span>
 	                    <input class="text" type="text" name="my_id" id="my_id" size="30" maxlength="12"
 	                        placeholder="4~12자의 영문 대소문자와 숫자로만 입력"  required/>
@@ -56,7 +56,7 @@
 	                </label>
 	
 	                <label class="rowtext"><span>휴대폰 번호 <span class="required">*</span></span>
-	                    <input class="text" type="text" name="my_phonenum" id="my_phonenum" size="20" maxlength="20" >
+	                    <input class="text" type="text" name="my_phonenum" id="my_phonenum" size="20" maxlength="20" placeholder="숫자만 입력">
 	                </label>
         	 </fieldset>
             <p align="center"></p>

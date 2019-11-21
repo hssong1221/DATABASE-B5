@@ -30,7 +30,8 @@
 	String schedule_id = request.getParameter("schedule_id");
 	String pay_method = request.getParameter("pay_method");
 	int total_price = Integer.parseInt(request.getParameter("total_price"));
-	String ticketing_id = null;
+
+	
 	try{
 		String sql = "SELECT * FROM client WHERE client_id='"+id+"'";
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -67,7 +68,9 @@
 		stmt = conn.prepareStatement(sql6);
 		stmt.executeUpdate();
 		
-		rs.close();%>
+	    
+	    
+			rs.close();%>
 			<h3>예매가 완료되었습니다.</h3><br/>
 			<%=(int)(total_price*0.1)%> 마일리지가  적립됐습니다. <br/>
 			<a href = "ticketing_list.jsp">예매내역</a>

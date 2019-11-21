@@ -22,7 +22,6 @@
 	<body>
 	<div class="maindiv">
 	<%
-		session.invalidate();
 		request.setCharacterEncoding("UTF-8");
 		Connection conn=null;
 		Context init = new InitialContext();

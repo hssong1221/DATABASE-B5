@@ -18,8 +18,9 @@
 		});
 		</script>
 	</head>
+<div id=head></div>
 	<body>
-		<div id=head></div>
+		<div class="maindiv">
 	<%
 		session.invalidate();
 		request.setCharacterEncoding("UTF-8");
@@ -71,7 +72,7 @@
 			
 				
 
-				<div id=footer></div>
+				
 	<% 
 			rs.close();
 			
@@ -85,5 +86,7 @@
 		}
 				
 	%>
+	</div>
 	</body>
+	<div id=footer></div>
 </html>

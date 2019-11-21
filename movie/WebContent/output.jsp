@@ -18,6 +18,7 @@
 </head>
 <div id=head></div>
 <body>
+<div class="maindiv">
 <% 
 	request.setCharacterEncoding("UTF-8");
 	
@@ -93,6 +94,7 @@ try{
 }
 
 %>
+</div>
 </body>
 <div id=footer></div>
 </html>

@@ -19,6 +19,7 @@
 </head>
 <div id=head></div>
 <body>
+<div class="maindiv">
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = (String)session.getAttribute("id");
@@ -71,7 +72,7 @@
 			
 %>
 
-
+</div>
 		
 </body>
 <div id=footer></div>

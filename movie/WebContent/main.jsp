@@ -16,21 +16,67 @@
 			$("#head").load("./style/head.html");
 			$("#footer").load("./style/footer.html");
 		});
+		
+		if (self.name != 'reload') {
+	         self.name = 'reload';
+	         self.location.reload(true);
+	     }
+	    else self.name = ''; 
 	</script>
 </head>
 <div id=head></div>
 <body>
 <div class="maindiv">
+<%!
+	
+	public void rate(String movie_id) throws Exception{
+		Connection conn=null;
+		Context init = new InitialContext();
+		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+		conn = ds.getConnection();
+		int ticketing_count = 0;
+		int ticketing_count1 = 0;
+		
+		try{
+			String sql = "select count(ticketing_id) from ticketing";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+		    
+			while(rs.next()) {
+		       ticketing_count = rs.getInt("count(ticketing_id)");
+				}
+			
+			
+		    sql = "select count(ticketing_id) from schedule natural join ticketing where movie_id = '"+movie_id+"'";
+		    stmt = conn.prepareStatement(sql);
+		    rs = stmt.executeQuery();
+		    while(rs.next()) {
+		       ticketing_count1 = rs.getInt("count(ticketing_id)");
+		    }
+		    
+		    float booking_rate = (float)ticketing_count1 / (float)ticketing_count * 100;
+		    
+		    sql = "update movie set booking_rate ="+booking_rate+" where movie_id='"+movie_id +"'";
+		    stmt = conn.prepareStatement(sql);
+		    stmt.executeUpdate();
+		}catch(Exception e){
+		    e.printStackTrace();
+		}
+		finally{
+			conn.close();
+		}
+}
 
+%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = (String)session.getAttribute("id");
 	String admin = "admin";
+	
 	Connection conn=null;
 	Context init = new InitialContext();
 	DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 	conn = ds.getConnection();
-	
 	String moviepage = "1";
 	
 	try{
@@ -65,11 +111,13 @@
 				<a href = "ticketing.jsp"><button>예매</button></a><br/>
 				</div>
 <% 			}
+			
 			String sql3 = "select * from movie";
 			stmt = conn.prepareStatement(sql3);
 			rs = stmt.executeQuery();
 			while(rs.next()){
-%>
+				rate(rs.getString("movie_id"));
+%>				
 			<div class='movie'>
 					<a href ="m_info.jsp?moviepage=<%= rs.getString("movie_id")%>"><img class='poster'  src="image\<%=rs.getString("movie_id")%>.jpg"/></a>
 					<p class='rating'><strong>예매율 : <%=rs.getString("booking_rate")%></strong></p>

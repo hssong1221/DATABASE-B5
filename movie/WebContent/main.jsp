@@ -7,16 +7,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>콱 씨네마</title>
-<link href="./style/index.css" type="text/css" rel="stylesheet" />
-		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script type="text/javascript">
+	<meta charset="UTF-8">
+	<title>콱 씨네마</title>
+	<link href="./style/index.css" type="text/css" rel="stylesheet" />
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript">
 		$(document).ready( function() {
 			$("#head").load("./style/head.html");
 			$("#footer").load("./style/footer.html");
 		});
-		</script>
+	</script>
 </head>
 <div id=head></div>
 <body>
@@ -112,7 +112,7 @@
 			
 			
 		}%>
-		<div id=footer></div>
+		
 <%	}catch(Exception e){
 	    out.print("연결에 실패하였습니다.");
 	    e.printStackTrace();
@@ -126,4 +126,5 @@
 
 		
 </body>
+<div id=footer></div>
 </html>

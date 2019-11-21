@@ -8,14 +8,22 @@
 <head>
 <meta charset="UTF-8">
 <title>콱 씨네마 - 예매 내역</title>
-
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
+	$(document).ready( function() {
+		$("#head").load("./style/head.html");
+		$("#footer").load("./style/footer.html");
+	});
+	
+	
 	function delchk(){
 	       return confirm("예매취소하시겠습니까?");
 	}
 </script>
 
+
 </head>
+<div id=head></div>
 <body>
 <% 
 	request.setCharacterEncoding("UTF-8");
@@ -79,4 +87,5 @@ try{
 
 %>
 </body>
+<div id=footer></div>
 </html>

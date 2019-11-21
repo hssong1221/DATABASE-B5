@@ -5,9 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>콱 씨네마 - 회원가입</title>
-    <link href="./style/master.css" type="text/css" rel="stylesheet" />
+    <script src = "js/join.js"></script>
     <link href="./style/join.css" type="text/css" rel="stylesheet" />
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link href="./style/master.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript">
     $(document).ready( function() {
         $("#head").load("./style/head.html");
@@ -16,7 +17,6 @@
     </script>
 </head>
 <body>
-    <script src = "js/join.js"></script>
     <div id="head" > </div>
 
     <div class="new">

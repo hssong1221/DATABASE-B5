@@ -8,7 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <title>콱 씨네마 - 내 정보</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready( function() {
+		$("#head").load("./style/head.html");
+		$("#footer").load("./style/footer.html");
+	});
+</script>
 </head>
+<div id=head></div>
 <body>
 <% 
 	request.setCharacterEncoding("UTF-8");
@@ -86,4 +94,5 @@ try{
 
 %>
 </body>
+<div id=footer></div>
 </html>

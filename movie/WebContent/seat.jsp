@@ -47,48 +47,21 @@
     
     
 %>    
-<style>
-input[type=checkbox] + label{
-	display : inline-block;
-	margin : 10px;
-	float:left;
-	width:50px;
-	height:50px;
-	background-color : #666666;
-	border-radius:3px;
-}
-input[type=checkbox]:checked + label{
- 	background-color : pink;
- }
-input[type=checkbox]:disabled + label{
- 	background-color : red;
- }
-input[type=checkbox]:hover + label{
- 	background-color : gray;
- }
-input[type=checkbox]{
-	display:none;
-}
-
-</style>
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link href="./style/seat.css" type="text/css" rel="stylesheet" />
 <title>콱씨네마 - 좌석선택</title>
 
 
-
-<style type="text/css">
-*{
-	padding: 0px; margin: 0px; 
-}
-td {
-	font-size: 9pt;font-family: 돋움;
-}
-</style>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+$(document).ready( function() {
+	$("#head").load("./style/head.html");
+	$("#footer").load("./style/footer.html");
+});
+
 function send() {
 	var f=document.forms[0];
 	 // 자바스트립트에서 표현식 사용 가능
@@ -165,7 +138,7 @@ function seat(seatnum) {
 
 
 </head>
-
+<div id=head></div>
 <body>
 <% 
 try{
@@ -278,5 +251,5 @@ try{
 </form>
 
 </body>
-
+<div id=footer></div>
 </html>

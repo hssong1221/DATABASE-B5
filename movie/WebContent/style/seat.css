@@ -1,0 +1,28 @@
+input[type=checkbox] + label{
+	display : inline-block;
+	margin : 10px;
+	float:left;
+	width:50px;
+	height:50px;
+	background-color : #666666;
+	border-radius:3px;
+}
+input[type=checkbox]:checked + label{
+ 	background-color : pink;
+ }
+input[type=checkbox]:disabled + label{
+ 	background-color : red;
+ }
+input[type=checkbox]:hover + label{
+ 	background-color : gray;
+ }
+input[type=checkbox]{
+	display:none;
+}
+
+*{
+	padding: 0px; margin: 0px; 
+}
+td {
+	font-size: 9pt;font-family: µ¸¿ò;
+}

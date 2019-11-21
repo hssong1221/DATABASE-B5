@@ -9,7 +9,15 @@
 <head>
 <meta charset="UTF-8">
 <title>예매 - 상영시간 선택</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready( function() {
+		$("#head").load("./style/head.html");
+		$("#footer").load("./style/footer.html");
+	});
+</script>
 </head>
+<div id=head></div>
 <body>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -66,4 +74,5 @@
 
 		
 </body>
+<div id=footer></div>
 </html>

@@ -54,7 +54,7 @@
 		       ticketing_count1 = rs.getInt("count(ticketing_id)");
 		    }
 		    
-		    float booking_rate = (float)ticketing_count1 / (float)ticketing_count * 100;
+		    float booking_rate = Float.parseFloat(String.format("%.2f", (float)ticketing_count1 / (float)ticketing_count * 100));
 		    
 		    sql = "update movie set booking_rate ="+booking_rate+" where movie_id='"+movie_id +"'";
 		    stmt = conn.prepareStatement(sql);

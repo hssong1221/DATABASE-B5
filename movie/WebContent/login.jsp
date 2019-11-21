@@ -21,7 +21,8 @@
 	<% session.invalidate(); %>
 	
 <div class="maindiv">
-	<div class="entire">
+	<div class="new">
+		<fieldset><legend>로그인</legend>
 	<form  method="post" action="login3.jsp">
 			<div class="login">
 					<img class='login-logo' src='./style/login.png' />			
@@ -32,7 +33,7 @@
 				</div>
 				<div class="row">
 					<i class="material-icons">vpn_key</i>
-				<input class="text" type="text" id="my_pwd" name="my_pwd"
+				<input class="text" type="password" id="my_pwd" name="my_pwd"
 					placeholder="Your Password" required>
 				</div>
 				<button type="submit" value="로그인">
@@ -40,12 +41,13 @@
 				</button>
 			</div>
 	</form>
-	
 		<form action="join.jsp">
-			<div class="new">
+			<div class="btn">
 				<button type="submit" value="회원가입">회원가입</button>
 			</div>
 		</form>		
+	</fieldset>
+
 	</div>	
 </div>
 	

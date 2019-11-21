@@ -28,12 +28,12 @@
 				<div class="row">
 					<i class="material-icons">person</i>
 				<input class="text" type="text" id="my_id" name="my_id" 
-				value="Username" onfocus="this.value=''" required>
+				placeholder="Your Name" required>
 				</div>
 				<div class="row">
 					<i class="material-icons">vpn_key</i>
-				<input class="text" type="text" id="my_pwd" name="my_pwd" value="Password"
-					onfocus="this.value='', this.type='password'" required>
+				<input class="text" type="text" id="my_pwd" name="my_pwd"
+					placeholder="Your Password" required>
 				</div>
 				<button type="submit" value="로그인">
 					로그인

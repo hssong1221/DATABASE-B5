@@ -1,0 +1,21 @@
+.title{
+	background-color: #bbdefb;
+	text-align: center;
+}
+.table{
+	padding:10px;
+	border: 2px solid;
+    border-radius: 4px;
+    overflow:hidden;
+    background-color: #dff1d7;
+    margin: 0 auto;
+    position: relative;
+  	width:30%;
+}
+.tablediv{
+	text-align:center;
+}
+.btn{
+	text-align:center;
+	margin-top:10px;
+}

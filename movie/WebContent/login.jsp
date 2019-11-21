@@ -5,7 +5,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>콱 씨네마 - 로그인</title>
-	<link href="./style/master.css" type="text/css" rel="stylesheet" />
 	<link href="./style/login.css" type="text/css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -16,11 +15,13 @@
 	});
 	</script>
 </head>
+	<div id="head" > </div>
+
 <body>
 	<% session.invalidate(); %>
-	<div id="head" > </div>
 	
-<div class="entire">
+<div class="maindiv">
+	<div class="entire">
 	<form  method="post" action="login3.jsp">
 			<div class="login">
 					<img class='login-logo' src='./style/login.png' />			
@@ -44,14 +45,16 @@
 			<div class="new">
 				<button type="submit" value="회원가입">회원가입</button>
 			</div>
-		</form>			
+		</form>		
+	</div>	
 </div>
 	
 	
 	
 
-	<div id="footer" > </div>
 
 	
 </body>
+	<div id="footer" > </div>
+
 </html>

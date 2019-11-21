@@ -1,0 +1,7 @@
+.movie{
+	border:2px solid gray;
+	border-radius: 15px;
+	float:left;
+	width:250px;
+	height:375px;
+}

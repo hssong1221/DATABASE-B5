@@ -20,7 +20,7 @@
 </head>
 <div id=head></div>
 <body>
-
+<div class="maindiv">
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -123,7 +123,7 @@
 			
 %>
 
-
+</div>
 		
 </body>
 <div id=footer></div>

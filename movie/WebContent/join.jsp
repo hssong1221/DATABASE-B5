@@ -8,7 +8,6 @@
     <script src = "js/join.js"></script>
     <link href="./style/join.css" type="text/css" rel="stylesheet" />
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <link href="./style/master.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript">
     $(document).ready( function() {
         $("#head").load("./style/head.html");
@@ -16,26 +15,27 @@
     });
     </script>
 </head>
-<body>
     <div id="head" > </div>
 
-    <div class="new">
+<body>
+
+    <div class="new maindiv">
         <FORM class="login-form" name="f" method="post" action="login2.jsp" onsubmit="return validate()">
                 <div class="join-logo-div">
                     <img class='join-logo' src='./style/welcome.png' />
                 </div>
 
                 <div class="rowtext">아이디:
-                    <input class="text" type="text" name="my_id" id="my_id" size="28" maxlength="12"
+                    <input class="text" type="text" name="my_id" id="my_id" size="30" maxlength="12"
                         value="4~12자의 영문 대소문자와 숫자로만 입력" onfocus="this.value=''" required/>
                 </div>
 
                 <div class="rowtext">비밀번호:
-                    <input class="text" type="text" id="my_pwd" name="my_pwd" size="28" maxlength="12" value="4~12자의 영문 대소문자와 숫자로만 입력" onfocus="this.value='', this.type='password'" required />
+                    <input class="text" type="text" id="my_pwd" name="my_pwd" size="30" maxlength="12" value="4~12자의 영문 대소문자와 숫자로만 입력" onfocus="this.value='', this.type='password'" required />
                 </div>
 
                 <div class="rowtext">비밀번호 확인:
-                    <input class="text" type="text" id="my_pwd2" name="my_pwd2" size="28" maxlength="12" value="4~12자의 영문 대소문자와 숫자로만 입력" onfocus="this.value='', this.type='password'" required /> 
+                    <input class="text" type="text" id="my_pwd2" name="my_pwd2" size="30" maxlength="12" value="4~12자의 영문 대소문자와 숫자로만 입력" onfocus="this.value='', this.type='password'" required /> 
                 </div>
 
                 <div class="rowtext">메일주소:
@@ -65,6 +65,7 @@
         </FORM>
     </div>
 
-        <div id="footer" > </div>
 </body>
+        <div id="footer" > </div>
+
 </html>

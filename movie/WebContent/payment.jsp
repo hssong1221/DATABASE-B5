@@ -18,6 +18,7 @@
 </head>
 <div id=head></div>
 <body>
+<div class="maindiv">
 <%
 	request.setCharacterEncoding("UTF-8");
 	Connection conn=null;
@@ -91,6 +92,7 @@
 <input type = "submit" value = "다음"/>
 </form>
 결제 가격 : <%=total_price%>
+</div>
 </body>
 <div id=footer></div>
 </html>

@@ -9,8 +9,17 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>영화등록</title>
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready( function() {
+			$("#head").load("./style/head.html");
+			$("#footer").load("./style/footer.html");
+		});
+		</script>
 	</head>
+	<div id="head" > 
 	<body>
+	<div class="maindiv">
 	<% 
 		request.setCharacterEncoding("UTF-8");
 		Connection conn=null;
@@ -49,5 +58,7 @@
 			conn.close();
 		}
 	%>
+	</div>
+	<div id="footer" > </div>
 	</body>
 </html>

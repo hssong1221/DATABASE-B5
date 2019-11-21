@@ -16,9 +16,11 @@
 	        $("#footer").load("./style/footer.html");
 	    });
 	    </script>
+	    <link href="./style/m_info.css" type="text/css" rel="stylesheet" />
 	</head>
-	<body>
 	<div id="head" > </div>
+	<body>
+	<div class="maindiv">
 	<%
 		session.invalidate();
 		request.setCharacterEncoding("UTF-8");
@@ -35,20 +37,21 @@
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){
 	%>
-		<p>
-			<img width = "30%" src="image\<%=rs.getString("movie_id")%>.jpg"/>
-			<br/>
-			영화제목 : <%=rs.getString("title")%> <br/>
-			감독 : <%=rs.getString("director")%> <br/>
-			배우 : <%=rs.getString("actor")%> <br/>
-			상영등급 : <%=rs.getString("grade")%> <br/>
-			장르 : <%=rs.getString("genre")%> <br/>
-			평정 : <%=rs.getString("rating")%> <br/>
-			예매율 : <%=rs.getString("booking_rate")%> <br/>
-			상영시간 : <%=rs.getString("run_time")%> <br/>
-			줄거리 : <%=rs.getString("plot")%> <br/>
+		<div class="maindiv">
+			<img class="movie" width = "30%" src="image\<%=rs.getString("movie_id")%>.jpg"/>
+			<div>
+				<p>영화제목 : <%=rs.getString("title")%> </p>
+				<p>감독 : <%=rs.getString("director")%> </p>
+				<p>배우 : <%=rs.getString("actor")%> </p>
+				<p>상영등급 : <%=rs.getString("grade")%> </p>
+				<p>	장르 : <%=rs.getString("genre")%> </p>
+				<p>평정 : <%=rs.getString("rating")%> </p>
+				<p>예매율 : <%=rs.getString("booking_rate")%> </p>
+				<p>상영시간 : <%=rs.getString("run_time")%> </p>
+				<p>줄거리 : <%=rs.getString("plot")%> </p>
+			</div>
 			
-		</p>
+		</div>
 	<%	}
 			rs.close();
 			
@@ -62,6 +65,8 @@
 		}
 				
 	%>
-	<div id="footer" > </div>
+	
+	</div>
 	</body>
+	<div id="footer" > </div>
 </html>

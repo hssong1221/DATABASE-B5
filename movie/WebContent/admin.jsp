@@ -11,9 +11,19 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>영화관 관리</title>
+		
 		<script src = "js/join.js"></script>
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready( function() {
+			$("#head").load("./style/head.html");
+			$("#footer").load("./style/footer.html");
+		});
+		</script>
 	</head>
-	<body>
+<div id="head" > </div>
+<body>
+	<div class="maindiv">
 	<nav>
 		<ul>
 		<br/>
@@ -110,5 +120,7 @@
 		}
 				
 	%>
-	</body>
+	</div>
+</body>
+<div id="footer" > </div>
 </html>

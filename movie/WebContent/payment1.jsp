@@ -18,6 +18,7 @@
 </head>
 <div id=head></div>
 <body>
+<div class="maindiv">
 <%
 	request.setCharacterEncoding("UTF-8");
 	Connection conn=null;
@@ -98,7 +99,7 @@
 %>
 <br/><br/>
 
-
+</div>
 </body>
 <div id=footer></div>
 </html>

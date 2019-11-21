@@ -8,8 +8,17 @@
 <head>
 <meta charset="UTF-8">
 <title>고객 정보 삭제</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready( function() {
+		$("#head").load("./style/head.html");
+		$("#footer").load("./style/footer.html");
+	});
+	</script>
 </head>
+<div id=head></div>
 <body>
+	<div class="maindiv">
 <%
 	request.setCharacterEncoding("UTF-8");
 
@@ -44,6 +53,7 @@
 	}
 	System.out.println("-------------리다이렉트--------------------");
 %>
-
+	</div>
 </body>
+<div id="footer" > </div>
 </html>

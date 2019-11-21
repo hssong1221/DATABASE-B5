@@ -8,8 +8,17 @@
 <head>
 <meta charset="UTF-8">
 <title>예매 정보 삭제</title>
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready( function() {
+			$("#head").load("./style/head.html");
+			$("#footer").load("./style/footer.html");
+		});
+	</script>
 </head>
+<div id="head" > </div>
 <body>
+<div class="maindiv">
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = (String)session.getAttribute("id");
@@ -50,5 +59,7 @@
 	alert("예매가 취소되었습니다.");
 	location.href = "redirect.jsp";
 </script>
+</div>
 </body>
+<div id="footer" > </div>
 </html>

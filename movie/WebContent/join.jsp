@@ -19,7 +19,8 @@
 
 <body>
 
-    <div class="new maindiv">
+    <div class="maindiv">
+    	<div class="new">
         <FORM class="login-form" name="f" method="post" action="login2.jsp" onsubmit="return validate()">
                 <div class="join-logo-div">
                     <img class='join-logo' src='./style/welcome.png' />
@@ -61,8 +62,10 @@
             <div class="btn">
                 <button type="submit" name="submit" value="회원 가입" >회원가입</button>
                 <button type="reset" value="다시 입력">다시입력</button>
-            </div>
+            
         </FORM>
+        </div>
+        </div>
     </div>
 
 </body>

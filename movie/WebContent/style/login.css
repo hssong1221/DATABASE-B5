@@ -9,7 +9,7 @@
 }
 
 .entire{
-	background-color: #dff1d7;
+background-color: #dff1d7;
   
   border-radius: 4px;
   
@@ -21,7 +21,7 @@
   margin: 0 auto;
   
   position: relative;
-  top: 100%;
+
 }
 .new{
 	text-align: center;

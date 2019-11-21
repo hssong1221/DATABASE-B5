@@ -20,7 +20,8 @@
 <body>
 	<% session.invalidate(); %>
 	
-<div class="entire maindiv">
+<div class="maindiv">
+	<div class="entire">
 	<form  method="post" action="login3.jsp">
 			<div class="login">
 					<img class='login-logo' src='./style/login.png' />			
@@ -44,7 +45,8 @@
 			<div class="new">
 				<button type="submit" value="회원가입">회원가입</button>
 			</div>
-		</form>			
+		</form>		
+	</div>	
 </div>
 	
 	

@@ -163,11 +163,7 @@ function mval(){
     var plot = document.getElementById("PLOT");
     var movie_id = document.getElementById("MOVIE_ID");
     
-    if(title.value == "")
-    {
-    	alert("didi");
-    	return false;
-   	}
+    
     if (((title.value) == "") || ((director.value) == "") || ((actor.value) == "") || ((grade.value) == "") || ((genre.value) == "") || ((rating.value) == "") || ((booking_rate.value) == "") || ((run_time.value) == "") || ((plot.value) == "") || ((movie_id.value) == ""))
     {
         alert("내용을 입력하지 않았습니다.");

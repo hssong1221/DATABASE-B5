@@ -44,15 +44,8 @@
 			ResultSet rs2 = stmt2.executeQuery();
 			%>
 			<h1>관리자로 로그인 하셨습니다.</h1><br/>
-			<p>!금일 수익!</p>
-			<% 
-			while(rs2.next()){ %>
-			
-				<%= rs2.getString("client_id") %>
-			<% }
-			
-			%>
-			
+
+			<br/>
 			<a href="admin.jsp">영화관 관리 </a><br/>
 			<a href="index.jsp">로그아웃</a>
 			

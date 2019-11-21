@@ -58,7 +58,7 @@
 		stmt = conn.prepareStatement(sql4);
 		stmt.executeUpdate();
 		
-		String sql5 = "insert into payment(pay_num,pay_method,total_price,ticketing_id,client_id) values(payment_seq.nextval, '" + pay_method + "'," + total_price + ",ticketing_seq.currval,'"+ id +"')";
+		String sql5 = "insert into payment(pay_num,pay_method,total_price,ticketing_id,client_id, paydate) values(payment_seq.nextval, '" + pay_method + "'," + total_price + ",ticketing_seq.currval,'"+ id +"' ,sysdate)";
 		stmt = conn.prepareStatement(sql5);
 		stmt.executeUpdate();
 		

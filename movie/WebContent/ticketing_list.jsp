@@ -66,15 +66,6 @@ try{
 <%	if(rs.next()){%>
 			                 <br/>
 			<%do{%>
-<<<<<<< HEAD
-				<%=rs.getString("theater_num")%>   
-				<%=rs.getString("screening_date")%>   
-				<%=rs.getString("start_time")%>   
-				<%=rs.getString("title")%>   
-				<%=rs.getString("total_price")+'원'%>   
-				<%=rs.getString("ticketing_id")%>   
-				<a onclick="return delchk();" href="cancel.jsp?ticketing_id=<%=rs.getString("ticketing_id")%>&schedule_id=<%=rs.getString("schedule_id")%>">예매 취소</a><br/>
-=======
 				<label><span>상영관</span>   <%=rs.getString("theater_num")%> </label>
 				<label><span>좌석번호</span> <% while(rs1.next()){ %>
 								<%=rs1.getString("name")%> 
@@ -87,7 +78,6 @@ try{
 				<label><span>예매번호 </span> <%=rs.getString("ticketing_id")%>   </label>
 				<div class="btn">
 				<a onclick="return delchk();" href="cancel.jsp?ticketing_id=<%=rs.getString("ticketing_id")%>&schedule_id=<%=rs.getString("schedule_id")%>"><button>예매 취소</button></a></div>
->>>>>>> branch 'master' of https://github.com/hssong1221/DATABASE-B5.git
 			<% }while(rs.next());
 			}
 		else{

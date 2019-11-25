@@ -11,7 +11,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>영화관 관리</title>
-		
+		<link href="./style/admin.css" type="text/css" rel="stylesheet" />
 		<script src = "js/join.js"></script>
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript">
@@ -58,7 +58,7 @@
 			while(rs.next()){
 	%>		
 			<%= rs.getString("movie_id") %>
-			<img width = "20%" src="image\<%=rs.getString("movie_id")%>.jpg" />
+			<img class="movieimg"  src="image\<%=rs.getString("movie_id")%>.jpg" />
 				
 	<%	}
 	%>

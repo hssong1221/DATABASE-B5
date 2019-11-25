@@ -26,7 +26,6 @@
 </head>
 <div id=head></div>
 <body>
-<div class="maindiv">
 <% 
 	request.setCharacterEncoding("UTF-8");
 	
@@ -43,23 +42,20 @@ try{
 	ResultSet rs1 = stmt.executeQuery();
 	while(rs.next()){
 	%>
-		<h2><%= rs.getString("name") %> 님의 예매내역</h2><br/>
-		<a href="output.jsp"><button>내 정보 보러가기</button></a>
-		<a href="index.jsp"><button>로그아웃</button></a><br/><br/>
-		
-<%
+		<p class="loging"><%= rs.getString("name") %> 님</p>
+	<%
 	}
 	
 	
 	String sql1 = "select schedule_id, ticketing_id, total_price, screening_date, title,theater_num,start_time from payment natural join ticketing natural join schedule natural join movie WHERE client_id='"+id+"' order by ticketing_id";
 	stmt = conn.prepareStatement(sql1);
 	rs = stmt.executeQuery();
-
 	String sql2 = "select ticketing_id, LISTAGG(seat_name,', ') within group (order by seat_name) name from ticketing natural join ticketing_seat natural join seat natural join payment where client_id = '"+ id +"' group by ticketing_id order by ticketing_id";
 	stmt = conn.prepareStatement(sql2);
 	rs1 = stmt.executeQuery();
 %>
 	
+<div class="maindiv">
 	
 	<div class="new">
 		<fieldset><legend>예매 내역</legend>
@@ -93,7 +89,6 @@ try{
 	</div>
 <%	rs.close();
 	rs1.close();
-
 }catch(Exception e){
 	out.println("연결이 끊겼습니다.");
 	e.printStackTrace();
@@ -101,7 +96,6 @@ try{
 }finally{
 	conn.close();
 }
-
 %>
 </div>
 </body>

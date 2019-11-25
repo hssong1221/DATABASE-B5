@@ -1,10 +1,6 @@
 .new{
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	position:relative;
-	margin: 0 auto;
  	padding:10px;
- 	text-align:center;
- 	overflow: hidden;
 }
 .new label{
 	display:block;

@@ -63,13 +63,14 @@ try{
 	
 	<div class="new">
 		<fieldset><legend>예매 내역</legend>
-<%	if(rs.next()){%>
+<%	if(rs.next()&&rs1.next()){%>
 			                 <br/>
 			<%do{%>
+			<div class="movie">
 				<label><span>상영관</span>   <%=rs.getString("theater_num")%> </label>
-				<label><span>좌석번호</span> <% while(rs1.next()){ %>
+				<label><span>좌석번호</span> 
 								<%=rs1.getString("name")%> 
-							<%}%>  
+							
 				</label>
 				<label><span>상영일</span>	<%=rs.getString("screening_date")%>  </label>
 				<label><span>시작시간 </span> <%=rs.getString("start_time")%>  </label>
@@ -78,15 +79,15 @@ try{
 				<label><span>예매번호 </span> <%=rs.getString("ticketing_id")%>   </label>
 				<div class="btn">
 				<a onclick="return delchk();" href="cancel.jsp?ticketing_id=<%=rs.getString("ticketing_id")%>&schedule_id=<%=rs.getString("schedule_id")%>"><button>예매 취소</button></a></div>
-			<% }while(rs.next());
+			</div>
+			<% }while(rs.next()&&rs1.next());
 			}
 		else{
 			out.println("예매 내역이 없습니다.<br/>");
 		}
+%>	
 	
-	
-	
-	%>
+
 	<div class="btn"><a href = "main.jsp"><button>메인으로</button></a></div>
 	</fieldset>
 	</div>

@@ -4,6 +4,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="javax.sql.*"%>
 <%@ page import="javax.naming.*"%>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -34,6 +36,11 @@
 			String sql = "SELECT * FROM movie WHERE movie_id = '" + moviepage + "'";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
+			
+			String sql2 = "SELECT * FROM review WHERE movie_id = '"+ moviepage +"'";
+			PreparedStatement stmt2 = conn.prepareStatement(sql2);
+			ResultSet rs2 = stmt2.executeQuery();
+			
 			while(rs.next()){
 	%>
 		<div class="maindiv">
@@ -53,8 +60,32 @@
 		</div>
 	<%	}
 			rs.close();
+			%>
+			<fieldset><legend>리뷰 작성</legend>
+			<form method = "post" action="review_action.jsp?moviepage=<%= moviepage%>">
 			
-		    
+			점수 (1~5사이)<br/><input class ="text" type ="text" id="rating" name="rating"
+			placeholder="점수를 입력하세요" required/>
+			<br/>
+			리뷰<br/><textarea class ="text" id="review" name="review" 
+			placeholder="리뷰를 입력하세요" required></textarea>
+			<br/>
+			<button type = "submit" value ="등록">등록</button>
+			</form>
+			</fieldset>
+		<% 
+			while(rs2.next()) {
+			%>
+			
+			<table>
+			<tr><td>리뷰어</td><td><%=rs2.getString("CLIENT_ID") %></td></tr>
+			<tr><td>점수</td><td><%=rs2.getString("RATING") %></td></tr>
+			<tr><td>리뷰</td><td><%=rs2.getString("CONTENT") %></td></tr>
+			</table>
+			<hr />
+			
+  <% }
+		rs2.close();
 		}catch(Exception e){
 		    out.print("연결에 실패하였습니다.");
 		    e.printStackTrace();

@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>콱 씨네마 - 예매 내역</title>
+<link href="./style/ticketing_list.css" type="text/css" rel="stylesheet" />
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready( function() {
@@ -39,11 +40,12 @@ try{
 	String sql = "SELECT * FROM client WHERE client_id='"+id+"'";
 	PreparedStatement stmt = conn.prepareStatement(sql);
 	ResultSet rs = stmt.executeQuery();
+	ResultSet rs1 = stmt.executeQuery();
 	while(rs.next()){
 	%>
-		<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
-		<a href="output.jsp">내 정보 보러가기</a>
-		<a href="index.jsp">로그아웃</a><br/><br/>
+		<h2><%= rs.getString("name") %> 님의 예매내역</h2><br/>
+		<a href="output.jsp"><button>내 정보 보러가기</button></a>
+		<a href="index.jsp"><button>로그아웃</button></a><br/><br/>
 		
 <%
 	}
@@ -52,13 +54,19 @@ try{
 	String sql1 = "select schedule_id, ticketing_id, total_price, screening_date, title,theater_num,start_time from payment natural join ticketing natural join schedule natural join movie WHERE client_id='"+id+"' order by ticketing_id";
 	stmt = conn.prepareStatement(sql1);
 	rs = stmt.executeQuery();
+
+	String sql2 = "select ticketing_id, LISTAGG(seat_name,', ') within group (order by seat_name) name from ticketing natural join ticketing_seat natural join seat natural join payment where client_id = '"+ id +"' group by ticketing_id order by ticketing_id";
+	stmt = conn.prepareStatement(sql2);
+	rs1 = stmt.executeQuery();
 %>
 	
 	
-	<h3>예매 내역</h3>
+	<div class="new">
+		<fieldset><legend><예매 내역></legend>
 <%	if(rs.next()){%>
-			좌석번호   상영관   상영일   시작시간  영화제목   결제가격   예매번호<br/>
+			                 <br/>
 			<%do{%>
+<<<<<<< HEAD
 				<%=rs.getString("theater_num")%>   
 				<%=rs.getString("screening_date")%>   
 				<%=rs.getString("start_time")%>   
@@ -66,24 +74,34 @@ try{
 				<%=rs.getString("total_price")+'원'%>   
 				<%=rs.getString("ticketing_id")%>   
 				<a onclick="return delchk();" href="cancel.jsp?ticketing_id=<%=rs.getString("ticketing_id")%>&schedule_id=<%=rs.getString("schedule_id")%>">예매 취소</a><br/>
+=======
+				<label><span>상영관</span>   <%=rs.getString("theater_num")%> </label>
+				<label><span>좌석번호</span> <% while(rs1.next()){ %>
+								<%=rs1.getString("name")%> 
+							<%}%>  
+				</label>
+				<label><span>상영일</span>	<%=rs.getString("screening_date")%>  </label>
+				<label><span>시작시간 </span> <%=rs.getString("start_time")%>  </label>
+				<label><span>영화제목 </span> <%=rs.getString("title")%>   </label>
+				<label><span>결제가격 </span> <%=rs.getString("total_price")+'원'%>   </label>
+				<label><span>예매번호 </span> <%=rs.getString("ticketing_id")%>   </label>
+				<div class="btn">
+				<a onclick="return delchk();" href="cancel.jsp?ticketing_id=<%=rs.getString("ticketing_id")%>&schedule_id=<%=rs.getString("schedule_id")%>"><button>예매 취소</button></a></div>
+>>>>>>> branch 'master' of https://github.com/hssong1221/DATABASE-B5.git
 			<% }while(rs.next());
 			}
 		else{
 			out.println("예매 내역이 없습니다.<br/>");
 		}
 	
-	String sql2 = "select ticketing_id, LISTAGG(seat_name,', ') within group (order by seat_name) name from ticketing natural join ticketing_seat natural join seat natural join payment where client_id = '"+ id +"' group by ticketing_id order by ticketing_id";
-	stmt = conn.prepareStatement(sql2);
-	rs = stmt.executeQuery();
 	
-	while(rs.next()){%>
-		<%=rs.getString("name")%> <br/>
-	<%}%>
-
-	<a href = "main.jsp">메인으로</a>
 	
+	%>
+	<div class="btn"><a href = "main.jsp"><button>메인으로</button></a></div>
+	</fieldset>
+	</div>
 <%	rs.close();
-	
+
 }catch(Exception e){
 	out.println("연결이 끊겼습니다.");
 	e.printStackTrace();

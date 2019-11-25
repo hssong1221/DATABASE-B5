@@ -21,7 +21,8 @@
 	<% session.invalidate(); %>
 	
 <div class="maindiv">
-	<div class="entire">
+	<div class="new">
+		<fieldset><legend>로그인</legend>
 	<form  method="post" action="login3.jsp">
 			<div class="login">
 					<img class='login-logo' src='./style/login.png' />			
@@ -40,12 +41,13 @@
 				</button>
 			</div>
 	</form>
-	
 		<form action="join.jsp">
-			<div class="new">
+			<div class="btn">
 				<button type="submit" value="회원가입">회원가입</button>
 			</div>
 		</form>		
+	</fieldset>
+
 	</div>	
 </div>
 	

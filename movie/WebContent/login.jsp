@@ -32,7 +32,7 @@
 				</div>
 				<div class="row">
 					<i class="material-icons">vpn_key</i>
-				<input class="text" type="text" id="my_pwd" name="my_pwd"
+				<input class="text" type="password" id="my_pwd" name="my_pwd"
 					placeholder="Your Password" required>
 				</div>
 				<button type="submit" value="로그인">

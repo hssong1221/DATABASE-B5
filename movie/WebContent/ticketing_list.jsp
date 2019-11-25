@@ -59,7 +59,13 @@ try{
 <%	if(rs.next()){%>
 			좌석번호   상영관   상영일   시작시간  영화제목   결제가격   예매번호<br/>
 			<%do{%>
-				<%=rs.getString("theater_num")%>   <%=rs.getString("screening_date")%>   <%=rs.getString("start_time")%>   <%=rs.getString("title")%>   <%=rs.getString("total_price")+'원'%>   <%=rs.getString("ticketing_id")%>   <a onclick="return delchk();" href="cancel.jsp?ticketing_id=<%=rs.getString("ticketing_id")%>&schedule_id=<%=rs.getString("schedule_id")%>">예매 취소</a><br/>
+				<%=rs.getString("theater_num")%>   
+				<%=rs.getString("screening_date")%>   
+				<%=rs.getString("start_time")%>   
+				<%=rs.getString("title")%>   
+				<%=rs.getString("total_price")+'원'%>   
+				<%=rs.getString("ticketing_id")%>   
+				<a onclick="return delchk();" href="cancel.jsp?ticketing_id=<%=rs.getString("ticketing_id")%>&schedule_id=<%=rs.getString("schedule_id")%>">예매 취소</a><br/>
 			<% }while(rs.next());
 			}
 		else{

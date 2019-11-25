@@ -20,7 +20,7 @@
 </head>
 <div id=head></div>
 <body>
-<div class="maindiv">
+
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = (String)session.getAttribute("id");
@@ -35,11 +35,16 @@
 		String sql2 = "SELECT * FROM client WHERE client_id='"+id+"'";
 		PreparedStatement stmt = conn.prepareStatement(sql2);
 		ResultSet rs = stmt.executeQuery();
-		while(rs.next()){%>
-			<h2><%= rs.getString("name") %> 님 날짜를 선택해주세요.</h2><br/>
-			<a href="output.jsp"><button>내 정보 보러가기</button></a>
-			<a href="index.jsp"><button>로그아웃</button></a><br/><br/>
-		<%}%>
+      while(rs.next()){
+            %>
+                  <p class="loging"><%= rs.getString("name") %> 님</p>
+            <%}
+%>
+            <div class="maindiv">
+            <div class="new">
+            <fieldset><legend>예매</legend>
+<%          
+		%>
 		<h2>날짜를 선택하세요</h2>
 		<form action = "ticketing1.jsp" method = "POST">
 		<select name="month">
@@ -89,10 +94,13 @@
             <option value="30">30</option>
             <option value="31">31</option>
         </select>일
-        <input type = "submit" value = "선택"/>
+        <button type = "submit">선택</button>
+        <br/> <br/>
 		</form>
-		
+        <a href="main.jsp"><button>뒤로가기</button></a>
 
+		</fieldset>
+      </div>
 
 <%		rs.close();
 			

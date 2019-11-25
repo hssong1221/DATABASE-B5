@@ -78,7 +78,9 @@
 	DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 	conn = ds.getConnection();
 	String moviepage = "1";
-	
+%>	
+
+<%
 	try{
 		if(id.equals(admin)){
 			String sql1 = "SELECT * FROM client";
@@ -103,12 +105,12 @@
 			PreparedStatement stmt = conn.prepareStatement(sql2);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){%>
-				<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
 				<div>
 				<a href="output.jsp"><button>내 정보 보러가기</button></a>
 				<a href ="ticketing_list.jsp"><button>예매 내역</button></a>
 				<a href="index.jsp"><button>로그아웃</button></a>
-				<a href = "ticketing.jsp"><button>예매</button></a><br/>
+				<a href = "ticketing.jsp"><button>예매</button></a>
+				<p class="loging"><%= rs.getString("name") %> 님</p>
 				</div>
 <% 			}
 			
@@ -139,11 +141,11 @@
 	%>
 					<%=rs.getString("title") %></p> 
 					<p class='genre'><%=rs.getString("genre") %></p>
+		
+	
 
-		</div>
 
-
- 
+ </div>
   	<%	} 
   		 	
 			
@@ -153,7 +155,8 @@
 			
 			
 		}%>
-		
+
+	</div>	
 <%	}catch(Exception e){
 	    out.print("연결에 실패하였습니다.");
 	    e.printStackTrace();

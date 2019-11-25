@@ -45,3 +45,7 @@ button:hover{
 .maindiv{
 	min-height: 78vh;
 }
+.loging{
+  float:right;
+  clear:both;
+}

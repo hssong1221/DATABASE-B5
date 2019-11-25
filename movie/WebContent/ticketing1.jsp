@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>예매 - 영화 선택</title>
+<link href="./style/ticketing1.css" type="text/css" rel="stylesheet" />
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready( function() {
@@ -19,7 +20,6 @@
 </head>
 <div id=head></div>
 <body>
-<div class="maindiv">
 <%
 	request.setCharacterEncoding("UTF-8");
 	String id = (String)session.getAttribute("id");
@@ -34,21 +34,26 @@
 		String sql2 = "SELECT * FROM client WHERE client_id='"+id+"'";
 		PreparedStatement stmt = conn.prepareStatement(sql2);
 		ResultSet rs = stmt.executeQuery();
-		while(rs.next()){%>
-			<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
-			<a href="output.jsp">내 정보 보러가기</a>
-			<a href="index.jsp">로그아웃</a><br/><br/>
+
+		while(rs.next()){
+		%>
+			<p class="loging"><%= rs.getString("name") %> 님</p>
 		<%}%>
+<div class="maindiv">
 		
-		
+		<div class="new">
+			<fieldset><legend>예매</legend>
 		선택한 날짜 : <%=date%><br/>
 		
 <%		String sql3 = "SELECT distinct title, movie_id, title FROM movie natural join schedule WHERE screening_date ='"+ date +"'";
 		stmt = conn.prepareStatement(sql3);
 		rs = stmt.executeQuery();
+%>
+		<p>영화를 선택해주세요</p>
+<%
 		if(rs.next()){
 			do{%>
-				<a href = 'ticketing2.jsp?movie_id=<%=rs.getString("movie_id")%>&date=<%=date%>&title=<%=rs.getString("title")%>'><%= rs.getString("title")%></a><br/>	
+				<a class="movietitle" href = 'ticketing2.jsp?movie_id=<%=rs.getString("movie_id")%>&date=<%=date%>&title=<%=rs.getString("title")%>'><%= rs.getString("title")%></a><br/><br/>
 			<% }while(rs.next());
 			}
 		else{
@@ -57,9 +62,10 @@
 		
 
 		rs.close();
-			
-			
-
+%>			
+		</fieldset>
+	</div>		
+<%
 	}catch(Exception e){
 	    out.print("연결에 실패하였습니다.");
 	    e.printStackTrace();

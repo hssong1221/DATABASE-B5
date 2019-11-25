@@ -42,6 +42,7 @@
 	border-radius: 15px;
 	transition-duration: 0.5s;
 	text-align:center;
+	background-color: white;
 }
 .movie:hover{
 	box-shadow: 2px 2px 10px 1px gray; 
@@ -56,4 +57,16 @@
 	overflow:hidden;
 	float:left;
 	vertical-align:top;
+}
+
+fieldset{
+	margin: 0px 0px 10px 0px;
+	background-color: #dff1d7;
+  	border-radius: 4px;
+ 	box-shadow: 0 0 5px 1px #333;
+ 	
+	padding: 20px;
+	border: 1px solid #888;
+    border: 2px solid transparent;
+
 }

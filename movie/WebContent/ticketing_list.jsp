@@ -62,7 +62,7 @@ try{
 	
 	
 	<div class="new">
-		<fieldset><legend><예매 내역></legend>
+		<fieldset><legend>예매 내역</legend>
 <%	if(rs.next()){%>
 			                 <br/>
 			<%do{%>
@@ -91,6 +91,7 @@ try{
 	</fieldset>
 	</div>
 <%	rs.close();
+	rs1.close();
 
 }catch(Exception e){
 	out.println("연결이 끊겼습니다.");

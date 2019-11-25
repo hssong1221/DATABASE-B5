@@ -94,8 +94,8 @@
 			<h1>관리자로 로그인 하셨습니다.</h1><br/>
 
 			<br/>
-			<a href="admin.jsp">영화관 관리 </a><br/>
-			<a href="index.jsp">로그아웃</a>
+			<a href="admin.jsp"><button>영화관 관리</button> </a>
+			<a href="index.jsp"><button>로그아웃</button></a>
 			
 			<%
 			rs.close();

@@ -43,13 +43,13 @@
 		
 		<div class="new">
 			<fieldset><legend>예매</legend>
-		선택한 날짜 : <%=date%><br/>
+		<label><span>선택한 날짜 :</span> <%=date%></label>
 		
 <%		String sql3 = "SELECT distinct title, movie_id, title FROM movie natural join schedule WHERE screening_date ='"+ date +"'";
 		stmt = conn.prepareStatement(sql3);
 		rs = stmt.executeQuery();
 %>
-		<p>영화를 선택해주세요</p>
+		<label><span>영화를 선택해주세요</span></label>
 <%
 		if(rs.next()){
 			do{%>

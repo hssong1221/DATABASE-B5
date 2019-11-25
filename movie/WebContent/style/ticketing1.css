@@ -9,6 +9,12 @@
 	display:block;
 	margin-bottom: 10px;
 }
+span{
+	color: #009959;
+	font-weight: bold;
+	font-size: 18px;
+	text-shadow: 1px 1px 1px #98cfb8;
+}
 legend{
 	color: #98cfb8;
 	border-top: 1px solid #00ffae;
@@ -40,6 +46,5 @@ fieldset{
 }
 .movietitle{
 	padding-left: 30px;
-	color: #009959;
 	text-shadow: 1px 1px 1px #98cfb8;
 }

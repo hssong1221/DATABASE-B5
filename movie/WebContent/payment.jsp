@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>콱씨네마 - 결제</title>
+<link href="./style/payment.css" type="text/css" rel="stylesheet" />
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready( function() {
@@ -37,13 +38,9 @@
 		ResultSet rs = stmt.executeQuery();
 		while(rs.next()){
 		%>
-			<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
-			<a href="output.jsp">내 정보 보러가기</a>
-			<a href="index.jsp">로그아웃</a><br/><br/>
-			
-		<%
+			<p class="loging"><%= rs.getString("name") %> 님</p>
+		<%}
 		
-		}
 		
 		String sql1 = "delete from seat_before";
 		stmt = conn.prepareStatement(sql1);
@@ -58,12 +55,16 @@
 		String sql2 = "SELECT * FROM schedule natural join movie WHERE schedule_id='"+schedule_id+"'";
 		stmt = conn.prepareStatement(sql2);
 		rs = stmt.executeQuery();
+%>
+		<div class="new">
+		<fieldset><legend>결제</legend>
+<%
 		while(rs.next()){
 		%>
-			상영일 : <%=rs.getString("screening_date")%><br/> 
-			시작시간 : <%=rs.getString("start_time")%><br/>
-			상영관 : <%=rs.getString("theater_num")%><br/>
-			영화제목 : <%=rs.getString("title")%><br/>
+			<label><span>상영일  </span><%=rs.getString("screening_date")%></label> 
+			<label><span>시작시간  </span><%=rs.getString("start_time")%></label>
+			<label><span>상영관  </span><%=rs.getString("theater_num")%></label>
+			<label><span>영화제목  </span><%=rs.getString("title")%></label>
 			
 		<%
 		
@@ -89,9 +90,13 @@
 	<option value = "신용카드" selected = "selected">신용카드</option>
 	<option value = "휴대폰결제">휴대폰결제</option>
 </select>
-<input type = "submit" value = "다음"/>
+<div><span>결제 가격 </span><%=total_price%></div>
+<div class="btn">
+<button type = "submit" value = "다음">다음</button>
+</div>
 </form>
-결제 가격 : <%=total_price%>
+	</fieldset>
+</div>
 </div>
 </body>
 <div id=footer></div>

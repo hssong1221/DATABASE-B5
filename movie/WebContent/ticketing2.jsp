@@ -31,41 +31,44 @@
 	String movie_id = request.getParameter("movie_id");
 	String title = request.getParameter("title"); 
 	try{
-
-
-		
-
 		String sql2 = "SELECT * FROM client WHERE client_id='"+id+"'";
 		PreparedStatement stmt = conn.prepareStatement(sql2);
 		ResultSet rs = stmt.executeQuery();
+
+		String sql3 = "SELECT theater_num, start_time FROM movie natural join schedule WHERE screening_date ='"+ date +"' and movie_id ='" + movie_id + "' order by start_time";
+		PreparedStatement stmt1 = conn.prepareStatement(sql3);
+		ResultSet rs1 = stmt1.executeQuery();
+
+		String sql4 = "select sum(status) from seat_schedule natural join schedule where movie_id = '" + movie_id + "' and screening_date = '" + date + "' group by start_time order by start_time";
+		PreparedStatement stmt2 = conn.prepareStatement(sql4);
+		ResultSet rs2 = stmt2.executeQuery();
 %>
+		<div class="maindiv">
 
 <%
 		while(rs.next()){
 		%>
 			<p class="loging"><%= rs.getString("name") %> 님</p>
 		<%}%>
-<div class="maindiv">
-<div class="new">
+			<div class="new">
 			<fieldset><legend>예매</legend>
-		선택한 날짜 : <%=date%><br/>
-		선택한 영화 : <%=title%><br/><br/>
+		<label><span>선택한 날짜 :</span> <%=date%></label>
+		<label><span>선택한 영화 :</span> <%=title%></label>
 		
-<%		String sql3 = "SELECT theater_num, start_time FROM movie natural join schedule WHERE screening_date ='"+ date +"' and movie_id ='" + movie_id + "' order by start_time";
-		stmt = conn.prepareStatement(sql3);
-		rs = stmt.executeQuery();
-		
-	 	while(rs.next()){%>
-			<%= rs.getString("theater_num")%> : <a href = "seat.jsp?date=<%=date%>&movie_id=<%=movie_id%>&start_time=<%= rs.getString("start_time")%>&theater_num=<%= rs.getString("theater_num")%>"><%= rs.getString("start_time")%></a><br/>
-	<%}
-		
-		String sql4 = "select sum(status) from seat_schedule natural join schedule where movie_id = '" + movie_id + "' and screening_date = '" + date + "' group by start_time order by start_time";
-		stmt = conn.prepareStatement(sql4);
-		rs = stmt.executeQuery();
-		while(rs.next()){%>
-			남은좌석 : <%=100-Integer.parseInt(rs.getString("sum(status)")) %> / 100 <br/>
-		<%}
+<%		
+	 	while(rs1.next()&&rs2.next()){%>
+	 	<div class="movie">
+		<a  href = "seat.jsp?date=<%=date%>&movie_id=<%=movie_id%>&start_time=<%= rs1.getString("start_time")%>&theater_num=<%= rs1.getString("theater_num")%>">
+			<label><%= rs1.getString("theater_num")%>  </label>	<hr class="hr" />
+			<label><span class="time" ><%= rs1.getString("start_time")%></span></label> <hr class="hr" />
+
+			<label> <%=100-Integer.parseInt(rs2.getString("sum(status)")) %> 석 / 100 석 </label>
+		</a>
+		</div>
+	<%}%>
+<%
 		rs.close();
+		rs1.close();
 %>			
 		</fieldset>
 		</div>

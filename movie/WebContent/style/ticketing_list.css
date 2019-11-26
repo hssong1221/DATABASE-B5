@@ -1,7 +1,7 @@
 .new{
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
  	padding:10px;
-
+ 	display: inline-block;
 }
 .new label{
 	display:block;
@@ -60,4 +60,7 @@ fieldset{
 	box-shadow: 2px 2px 10px 1px gray; 
 	transition-duration: 0.5s;
 	transform: translateY(-15px);
+}
+.maindiv{
+	text-align: center;
 }

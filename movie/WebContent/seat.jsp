@@ -140,16 +140,18 @@ function seat(seatnum) {
 </head>
 <div id=head></div>
 <body>
+<div class="maindiv">
+
 <% 
 try{
 	String sql2 = "SELECT * FROM client WHERE client_id='"+id+"'";
 	PreparedStatement stmt = conn.prepareStatement(sql2);
 	ResultSet rs = stmt.executeQuery();
-	while(rs.next()){%>
-		<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
-		<a href="output.jsp">내 정보 보러가기</a>
-		<a href="index.jsp">로그아웃</a><br/><br/>
-	<%}
+	while(rs.next()){
+	%>
+		<p class="loging"><%= rs.getString("name") %> 님</p>
+	<%
+	}
 	
 	rs.close();
 		
@@ -164,11 +166,13 @@ finally{
 %>
 <br/><br/>
 
+	<div class="new">
 
 
 <form action="payment.jsp?schedule_id=<%=schedule_id%>" method="post">
 <h3><%= theater_num %></h3><br/>
-선택한 자리 : <span id="multiPrint"></span><br/>
+<div>선택한 자리 : <span id="multiPrint"></span></div><br/>
+<div class="screen">Screen</div>
 <table width="<%=w%>">
 
 <tr height="30">
@@ -212,7 +216,7 @@ try{
 	String sql = "SELECT * FROM seat_schedule natural join seat WHERE schedule_id = '" + schedule_id + "' and status = 1";
 	PreparedStatement stmt = conn.prepareStatement(sql);
 	ResultSet rs = stmt.executeQuery();
-	
+
 	while(rs.next()){%>
 		<script>
 		var i = "<%=rs.getString("seat_name")%>";
@@ -237,11 +241,11 @@ try{
 <tr height="50">
 
       <td align="left">
-
-           <input type="button" value="좌석예약"
+      	<div class="btndiv">
+           <input class="btn" type="button" value="좌석예약"
 
                  onclick="send();">
-
+             </div>
       </td>
 
 </tr>
@@ -249,7 +253,8 @@ try{
 </table>
 
 </form>
-
+	</div>
+</div>
 </body>
 <div id=footer></div>
 </html>

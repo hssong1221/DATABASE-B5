@@ -3,7 +3,9 @@
 <%@page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
 <%@ page import="javax.naming.*"%>
-
+<%@ page import="java.lang.reflect.Array"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Arrays"%>
 
 <!DOCTYPE html>
 <html>
@@ -26,7 +28,7 @@
 		conn = ds.getConnection();
 		// 변수 선언
 		String id = "";
-		String movie = "";
+		String[] movie = null;
 		
 		//로그인 확인
 		try {
@@ -39,14 +41,29 @@
 			else {
 				//로그인 됬을 때
 				try {
-					String sql = "select movie_id from client natural join payment natural join ticketing natural join schedule where client_id = ?";
-					PreparedStatement stmt = conn.prepareStatement(sql);
-					stmt.setString(1, id);
-					ResultSet rs = stmt.executeQuery();
-					rs.next();
-					movie = rs.getString("movie_id");
+					String sql = "select distinct movie_id from client natural join payment natural join ticketing natural join schedule where client_id = '"+ id + "'";
+					Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+					ResultSet rs = stmt.executeQuery(sql);
+					if(rs.next()){
+						rs.last();
+						int row = rs.getRow();
+						movie = new String[row];
+						rs.first();
+						
+						for(int i=0; i < row; i++){
+					        movie[i] = rs.getString("movie_id");
+					        rs.next();
+						}
+					}
+					else{
+						movie = new String[1];
+					}
+					
+
+					   
+					System.out.println(movie[0]);
 					// 현재 보고 있는 페이지의 영화와 내가 본영화가 일치하는지 확인
-					if (moviep.equals(movie)== true) {
+					if (Arrays.asList(movie).contains(moviep)) {
 						//일치하면 sql로 리뷰 db에 업로드
 						try {
 							String sql2 = "INSERT INTO review VALUES (?,?,?,?)";
@@ -61,7 +78,7 @@
 							
 							<script>
 							alert("리뷰가 등록되었습니다!");
-							history.back();
+							location.href="m_info.jsp?moviepage=<%=moviep%>"; 
 							</script>
 							
 							<%

@@ -24,5 +24,48 @@ input[type=checkbox]{
 	padding: 0px; margin: 0px; 
 }
 td {
-	font-size: 9pt;font-family: µ¸¿ò;
+	font-size: 9pt;font-family: ï¿½ï¿½ï¿½ï¿½;
+}
+
+.new{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+ 	padding:10px;
+ 	margin-left:auto;
+	margin-right:auto;
+	overflow: hidden;
+
+	display: inline-block;
+	background-color: #f7f6f0;
+  	border-radius: 4px;
+ 	box-shadow: 0 0 5px 1px #333;
+ 	
+	padding: 20px;
+	border: 1px solid #888;
+    border: 2px solid transparent;
+}
+.maindiv{
+	text-align: center;
+}
+.screen{
+	border: 1px solid black;
+	background-image: url('tile.jpeg');
+}
+.btn{
+  background:#1AAB8A;
+  color:#fff;
+  position:relative;
+  height:30px;
+  font-size:10px;
+  padding:0 2em;
+  transition:800ms ease all;
+  outline:none;
+}
+.btn:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+.btndiv{
+  text-align: center;
+  padding-right: auto;
+  padding-left: auto;
 }

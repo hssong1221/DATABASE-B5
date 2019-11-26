@@ -1,6 +1,7 @@
 .new{
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
  	padding:10px;
+
 }
 .new label{
 	display:block;
@@ -29,11 +30,9 @@ legend{
 	font-size: 12px;
 }
 fieldset{
-	margin: 0px 0px 10px 0px;
 	background-color: #dff1d7;
   	border-radius: 4px;
  	box-shadow: 0 0 5px 1px #333;
- 	
 	padding: 20px;
 	border: 1px solid #888;
     border: 2px solid transparent;

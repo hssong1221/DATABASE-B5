@@ -106,7 +106,7 @@
 					<img class="star" src='./style/5.png'/>
 				<%}
 				%>
-					 | <%=rs2.getString("RATING") %> 점
+					 | <%=rs2.getString("RATING") %>  점
 			</div>
 			<div class="review"> <%=rs2.getString("CONTENT") %></div>
 			<hr />

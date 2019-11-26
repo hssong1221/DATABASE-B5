@@ -83,22 +83,10 @@
 <%
 	try{
 		if(id.equals(admin)){
-			String sql1 = "SELECT * FROM client";
-			PreparedStatement stmt = conn.prepareStatement(sql1);
-			ResultSet rs = stmt.executeQuery();
-			
-			String sql2 = "SELECT * FROM client";
-			PreparedStatement stmt2 = conn.prepareStatement(sql2);
-			ResultSet rs2 = stmt2.executeQuery();
-			%>
-			<h1>관리자로 로그인 하셨습니다.</h1><br/>
+%>
 
-			<br/>
-			<a href="admin.jsp"><button>영화관 관리</button> </a>
-			<a href="index.jsp"><button>로그아웃</button></a>
-			
-			<%
-			rs.close();
+			<script>location.href="admin.jsp"; </script>
+<%
 		}else{
 			//사용자 모드 일때 오직 사용자 개인의 정보만 가져올 수 있다.
 			String sql2 = "SELECT * FROM client WHERE client_id='"+id+"'";

@@ -53,6 +53,13 @@
 	 %>
 		<br/>
 		<div>
+			<h1>관리자로 로그인 하셨습니다.</h1><br/>
+
+			<br/>
+			<a href="index.jsp"><button>로그아웃</button></a>
+
+
+
 			<p id = "nowmovie">현재 상영중인 영화</p>
 	<% 
 			while(rs.next()){

@@ -17,6 +17,7 @@
 	        $("#head").load("./style/head.html");
 	        $("#footer").load("./style/footer.html");
 	    });
+
 	    </script>
 	    <link href="./style/m_info.css" type="text/css" rel="stylesheet" />
 	</head>
@@ -31,7 +32,8 @@
 		conn = ds.getConnection();
 		
 		String moviepage = request.getParameter("moviepage");
-		
+		String rating = "0";
+		int count = 0;
 		try{
 			String sql = "SELECT * FROM movie WHERE movie_id = '" + moviepage + "'";
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -41,6 +43,27 @@
 			PreparedStatement stmt2 = conn.prepareStatement(sql2);
 			ResultSet rs2 = stmt2.executeQuery();
 			
+			String sql4 = "select count(rating) from review where movie_id = '" + moviepage + "'";
+			PreparedStatement stmt4 = conn.prepareStatement(sql4);
+			ResultSet rs4 = stmt4.executeQuery();
+			while(rs4.next()){
+				count = rs4.getInt("count(rating)");
+			}
+			
+			String sql3 = "select avg(rating) from review where movie_id = '" + moviepage+ "'";
+			PreparedStatement stmt3 = conn.prepareStatement(sql3);
+			ResultSet rs3 = stmt3.executeQuery();
+			
+			
+			if(count != 0){
+				while(rs3.next()){
+					rating = String.format("%.2f", Float.parseFloat(rs3.getString("avg(rating)")));
+				}
+			}
+			
+			
+			rs3.close();
+			rs4.close();
 			while(rs.next()){
 	%>
 		<div class="new">
@@ -51,7 +74,7 @@
 				<label><span>배우 : </span><%=rs.getString("actor")%> </label>
 				<label><span>상영등급 :</span> <%=rs.getString("grade")%> </label>
 				<label><span>장르 : </span><%=rs.getString("genre")%> </label>
-				<label><span>평정 : </span><%=rs.getString("rating")%> </label>
+				<label><span>평점 : </span><%=rating%></label>
 				<label><span>예매율 : </span><%=rs.getString("booking_rate")%> </label>
 				<label><span>상영시간 : </span><%=rs.getString("run_time")%> </label>
 				<label><span>줄거리 : </span><%=rs.getString("plot")%> </label>

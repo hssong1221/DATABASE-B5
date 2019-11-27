@@ -69,6 +69,7 @@
 <%
 		rs.close();
 		rs1.close();
+		rs2.close();
 %>			
 		</fieldset>
 		</div>

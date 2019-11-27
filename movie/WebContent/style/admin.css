@@ -1,3 +1,4 @@
+
 .movieimg{
 	width:250px;
 	overflow:hidden;
@@ -15,4 +16,113 @@
 }
 form{
 	clear:both;
+}
+nav{
+	box-shadow: 0 1em 2em rgba(black, .05);
+}
+.nav{
+	overflow: hidden;
+	position:fixed;
+	right: 0;
+  	background-color: #333;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+}
+
+li a {
+  display: block;
+  color: white;
+  padding: 5px 12px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #111;
+  color: white;
+}
+input{
+}
+.new label{
+	display:block;
+	margin-bottom: 10px;
+}
+.new label > span{
+	float: left;
+	width: 70px;
+	color: #009959;
+	font-weight: bold;
+	font-size: 13px;
+	text-shadow: 1px 1px 1px #98cfb8;
+}
+.new input::placeholder{
+	color: #98cfb8;
+}
+.required{
+	color:red;
+	font-weight:normal;
+}
+.new input{
+	padding: 5px 8px 5px 8px;
+	 border: 1px solid #888;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      color: #555;
+      text-shadow: 0 1px #FFF;
+      outline: none;
+}
+.new input:hover:focus{
+	background-color: #FFF;
+}
+.new input:focus{
+	border-color:green;
+}
+.addmovie{
+	float:left;
+}
+.client_information{
+	float:left;
+	margin-left:10px; 
+}
+
+#money,#mmoney,#dtlist{
+	float:left;
+	margin-left:10px; 
+}
+.mainbtn{
+	margin-top: auto;
+	clear:both;
+	margin-bottom: 0
+}
+legend{
+	color: #98cfb8;
+	border-top: 1px solid #00ffae;
+	border-left: 1px solid #00ffae;
+	border-right: 1px solid #00ffae;
+	border-radius: 5px 5px 0px 0px;
+	
+	background: white;
+	padding: 0px 8px 3px 8px;
+	box-shadow: 0px 0px 5px 1px #333;
+
+	font-weight: bold;
+	font-size: 12px;
+}
+fieldset{
+	margin: 0px 0px 10px 0px;
+	background-color: #dff1d7;
+  	border-radius: 4px;
+ 	box-shadow: 0 0 5px 1px #333;
+	padding: 20px;
+	border: 1px solid #888;
+    border: 2px solid transparent;
+}
+th{
+	color: #009959;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #98cfb8;
 }

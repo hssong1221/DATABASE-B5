@@ -37,7 +37,7 @@
 		ResultSet rs = stmt.executeQuery();
       while(rs.next()){
             %>
-                  <p class="loging"><%= rs.getString("name") %> 님</p>
+                  <span class="loging"><%= rs.getString("name") %> 님</span>
             <%}
 %>
             <div class="maindiv">

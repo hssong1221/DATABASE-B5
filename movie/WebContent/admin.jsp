@@ -323,7 +323,6 @@
 	%>
 		</div>
 	</div> 
-		<a href = "main.jsp"><button class="mainbtn">메인화면</button></a>
 </body>
 <div id="footer" > </div>
 </html>

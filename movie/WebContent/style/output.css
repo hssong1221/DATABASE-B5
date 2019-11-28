@@ -19,7 +19,7 @@ outline: none;
 	display:block;
 	margin-bottom: 10px;
 }
-.new label > span{
+.new label > .inf{
 	float: left;
 	width: 100px;
 	color: #009959;

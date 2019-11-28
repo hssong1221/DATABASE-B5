@@ -37,19 +37,19 @@
 
 		while(rs.next()){
 		%>
-			<p class="loging"><%= rs.getString("name") %> 님</p>
+			<span class="loging"><%= rs.getString("name") %> 님</span>
 		<%}%>
 <div class="maindiv">
 		
 		<div class="new">
 			<fieldset><legend>예매</legend>
-		<label><span>선택한 날짜 :</span> <%=date%></label>
+		<label><span class="inf">선택한 날짜 :</span> <%=date%></label>
 		
 <%		String sql3 = "SELECT distinct title, movie_id, title FROM movie natural join schedule WHERE screening_date ='"+ date +"'";
 		stmt = conn.prepareStatement(sql3);
 		rs = stmt.executeQuery();
 %>
-		<label><span>영화를 선택해주세요</span></label>
+		<label><span class="inf">영화를 선택해주세요</span></label>
 <%
 		if(rs.next()){
 			do{%>

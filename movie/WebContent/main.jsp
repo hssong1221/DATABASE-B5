@@ -93,12 +93,12 @@
 			PreparedStatement stmt = conn.prepareStatement(sql2);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){%>
-				<div>
+				<div class="hed">
 				<a href="output.jsp"><button>내 정보 보러가기</button></a>
 				<a href ="ticketing_list.jsp"><button>예매 내역</button></a>
 				<a href="index.jsp"><button>로그아웃</button></a>
 				<a href = "ticketing.jsp"><button>예매</button></a>
-				<p class="loging"><%= rs.getString("name") %> 님</p>
+				<span class="loging"><%= rs.getString("name") %> 님</span>
 				</div>
 <% 			}
 			

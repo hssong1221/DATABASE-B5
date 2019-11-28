@@ -7,7 +7,7 @@
 	display:block;
 	margin-bottom: 10px;
 }
-.new label > span{
+.inf{
 	float: left;
 	width: 70px;
 	color: #009959;
@@ -61,6 +61,6 @@ fieldset{
 	transition-duration: 0.5s;
 	transform: translateY(-15px);
 }
-.maindiv{
+.maindiv {
 	text-align: center;
 }

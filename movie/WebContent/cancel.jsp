@@ -30,8 +30,19 @@
 	String ticketing_id = request.getParameter("ticketing_id");
 	String schedule_id = request.getParameter("schedule_id");
 	try {
+		
+		String sql4 = "select total_price from payment where ticketing_id = '" + ticketing_id + "'";
+		PreparedStatement stmt = conn.prepareStatement(sql4);
+		ResultSet rs = stmt.executeQuery();
+		rs.next();
+		int decrease = (int)(0.03 * rs.getInt("total_price"));
+		
+		sql4 = "update client set mileage = mileage - " + decrease + " where client_id = '" + id + "'";
+		stmt = conn.prepareStatement(sql4);
+		stmt.executeUpdate();
+				
 		String sql = "update seat_schedule set status = 0 where schedule_id = '"+ schedule_id + "' and seat_id = some(select seat_id from ticketing_seat natural join ticketing where ticketing_id = '"+ ticketing_id +"')";
-		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt = conn.prepareStatement(sql);
 		stmt.executeUpdate();
 
 		String sql1 = "delete from ticketing_seat where ticketing_id = '" + ticketing_id + "'";
@@ -47,6 +58,7 @@
 		stmt.executeUpdate();
 		
 		
+		rs.close();
 
 	} catch (Exception e) {
 		out.println("<h3>연결에 실패하였습니다.</h3>");

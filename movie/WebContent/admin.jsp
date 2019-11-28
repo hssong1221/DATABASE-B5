@@ -72,7 +72,10 @@
 			while(rs.next()){
 	%>		
 			<%= rs.getString("movie_id") %>
-			<img class="movieimg"  src="image\<%=rs.getString("movie_id")%>.jpg" />
+			<a href = "m_info.jsp?moviepage=<%= rs.getString("movie_id")%>">
+				<img class="movieimg"  src="image\<%=rs.getString("movie_id")%>.jpg" />
+			</a>
+			
 	<%	}
 	%>		</div>
 
@@ -80,16 +83,15 @@
 		<div class="addmovie">
 			<fieldset><legend>새로운 영화 추가</legend>
 			<form action = "movieregist.jsp" method="post" onSubmit = 'return mval();'>
+
 				<label><span>제목<span class="required">*</span></span><input placeholder="TITLE" type="text" name="TITLE" /></label>
 				<label><span>감독<span class="required">*</span></span><input placeholder="DIRECTOR" type="text" name="DIRECTOR" /></label>
 				<label><span>배우<span class="required">*</span></span><input placeholder="ACTOR" type="text" name="ACTOR" /></label>
 				<label><span>상영등급<span class="required">*</span></span><input placeholder="GRADE" type="text" name="GRADE" /></label>
 				<label><span>장르<span class="required">*</span></span><input placeholder="GENRE" type="text" name="GENRE" /></label>
-				<label><span>평점<span class="required">*</span></span><input placeholder="RATING" type="text" name="RATING" /></label>
-				<label><span>예약률<span class="required">*</span></span><input placeholder="BOOKING_RATE" type="text" name="BOOKING_RATE" /></label>
 				<label><span>시간<span class="required">*</span></span><input placeholder="RUN_TIME" type="text" name="RUN_TIME" /></label>
 				<label><span>줄거리<span class="required">*</span></span><textarea placeholder="PLOT" name="PLOT" cols="40" rows="8" ></textarea></label>
-				<label><span>영화ID<span class="required">*</span></span><input placeholder="MOVIE_ID" type="text" name="MOVIE_ID" /></label>
+				<label><span>영화ID<span class="required">*</span></span><input placeholder="MOVIE_ID 항상 최신 영화 다음 번호를 넣어야 합니다." type="text" name="MOVIE_ID" style="width:350px;" /></label>
 				<button type="submit" value="등록">등록</button>
 			</form>	
 		</fieldset>

@@ -61,13 +61,14 @@
 		stmt.executeUpdate();
 		
 		
-		String sql6 = "update client set mileage = mileage +"+ total_price*0.1 +" where client_id = '" + id + "'";
+		String sql6 = "update client set mileage = mileage +"+ (int)(total_price*0.03) +" where client_id = '" + id + "'";
 		stmt = conn.prepareStatement(sql6);
 		stmt.executeUpdate();
 		
 	    
 	    
 			rs.close();%>
+
 		<div class="new">
 		<fieldset><legend>예매완료</legend>
 			<span class="inf">예매가 완료되었습니다.</span><br/><br/>
@@ -75,6 +76,7 @@
 			<a href = "ticketing_list.jsp"><button>예매내역</button></a>
 			<a href = "main.jsp"><button>메인으로</button></a>
 		</fieldset>
+
 	<% }catch(Exception e){
 	    out.print("연결에 실패하였습니다.");
 	    e.printStackTrace();

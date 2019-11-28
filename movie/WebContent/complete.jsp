@@ -64,7 +64,7 @@
 		stmt.executeUpdate();
 		
 		
-		String sql6 = "update client set mileage = mileage +"+ total_price*0.1 +" where client_id = '" + id + "'";
+		String sql6 = "update client set mileage = mileage +"+ (int)(total_price*0.03) +" where client_id = '" + id + "'";
 		stmt = conn.prepareStatement(sql6);
 		stmt.executeUpdate();
 		
@@ -72,7 +72,7 @@
 	    
 			rs.close();%>
 			<h3>예매가 완료되었습니다.</h3><br/>
-			<%=(int)(total_price*0.1)%> 마일리지가  적립됐습니다. <br/>
+			<%=(int)(total_price*0.03)%> 마일리지가  적립됐습니다. <br/>
 			<a href = "ticketing_list.jsp">예매내역</a>
 			<a href = "main.jsp">메인으로</a>
 	<% }catch(Exception e){

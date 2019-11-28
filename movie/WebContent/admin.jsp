@@ -77,11 +77,9 @@
 				<input placeholder="ACTOR" type="text" name="ACTOR" /><br/>
 				<input placeholder="GRADE" type="text" name="GRADE" /><br/>
 				<input placeholder="GENRE" type="text" name="GENRE" /><br/>
-				<input placeholder="RATING" type="text" name="RATING" /><br/>
-				<input placeholder="BOOKING_RATE" type="text" name="BOOKING_RATE" /><br/>
 				<input placeholder="RUN_TIME" type="text" name="RUN_TIME" /><br/>
 				<textarea placeholder="PLOT" name="PLOT" cols="40" rows="8" ></textarea><br/>
-				<input placeholder="MOVIE_ID" type="text" name="MOVIE_ID" /><br/>
+				<input placeholder="MOVIE_ID 항상 최신 영화 다음 번호를 넣어야 합니다." type="text" name="MOVIE_ID" style="width:350px;" /><br/>
 				<input type="submit" value="등록" />
 			</form>	
 		</div>

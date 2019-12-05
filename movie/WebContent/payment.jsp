@@ -38,7 +38,7 @@
 		ResultSet rs = stmt.executeQuery();
 		while(rs.next()){
 		%>
-			<p class="loging"><%= rs.getString("name") %> 님</p>
+			<span class="loging"><%= rs.getString("name") %> 님</span>
 		<%}
 		
 		
@@ -61,10 +61,10 @@
 <%
 		while(rs.next()){
 		%>
-			<label><span>상영일  </span><%=rs.getString("screening_date")%></label> 
-			<label><span>시작시간  </span><%=rs.getString("start_time")%></label>
-			<label><span>상영관  </span><%=rs.getString("theater_num")%></label>
-			<label><span>영화제목  </span><%=rs.getString("title")%></label>
+			<label><span class="inf">상영일  </span><%=rs.getString("screening_date")%></label> 
+			<label><span class="inf">시작시간  </span><%=rs.getString("start_time")%></label>
+			<label><span class="inf">상영관  </span><%=rs.getString("theater_num")%></label>
+			<label><span class="inf">영화제목  </span><%=rs.getString("title")%></label>
 			
 		<%
 		
@@ -90,7 +90,7 @@
 	<option value = "신용카드" selected = "selected">신용카드</option>
 	<option value = "휴대폰결제">휴대폰결제</option>
 </select>
-<div><span>결제 가격 </span><%=total_price%></div>
+<div><span class="inf">결제 가격 </span><%=total_price%></div>
 <div class="btn">
 <button type = "submit" value = "다음">다음</button>
 </div>

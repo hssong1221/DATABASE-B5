@@ -39,12 +39,12 @@ try{
 	String sql = "SELECT * FROM client WHERE client_id='"+id+"'";
 	PreparedStatement stmt = conn.prepareStatement(sql);
 	ResultSet rs = stmt.executeQuery();
-	ResultSet rs1 = stmt.executeQuery();
 	while(rs.next()){
 	%>
-		<p class="loging"><%= rs.getString("name") %> 님</p>
+		<span class="loging"><%= rs.getString("name") %> 님</span>
 	<%
 	}
+	ResultSet rs1 = stmt.executeQuery();
 	
 	
 	String sql1 = "select schedule_id, ticketing_id, total_price, screening_date, title,theater_num,start_time from payment natural join ticketing natural join schedule natural join movie WHERE client_id='"+id+"' order by ticketing_id";
@@ -63,16 +63,16 @@ try{
 			                 <br/>
 			<%do{%>
 			<div class="movie">
-				<label><span>상영관</span>   <%=rs.getString("theater_num")%> </label>
-				<label><span>좌석번호</span> 
+				<label><span class="inf">상영관</span>   <%=rs.getString("theater_num")%> </label>
+				<label><span class="inf">좌석번호</span> 
 								<%=rs1.getString("name")%> 
 							
 				</label>
-				<label><span>상영일</span>	<%=rs.getString("screening_date")%>  </label>
-				<label><span>시작시간 </span> <%=rs.getString("start_time")%>  </label>
-				<label><span>영화제목 </span> <%=rs.getString("title")%>   </label>
-				<label><span>결제가격 </span> <%=rs.getString("total_price")+'원'%>   </label>
-				<label><span>예매번호 </span> <%=rs.getString("ticketing_id")%>   </label>
+				<label><span class="inf">상영일</span>	<%=rs.getString("screening_date")%>  </label>
+				<label><span class="inf">시작시간 </span> <%=rs.getString("start_time")%>  </label>
+				<label><span class="inf">영화제목 </span> <%=rs.getString("title")%>   </label>
+				<label><span class="inf">결제가격 </span> <%=rs.getString("total_price")+'원'%>   </label>
+				<label><span class="inf">예매번호 </span> <%=rs.getString("ticketing_id")%>   </label>
 				<div class="btn">
 				<a onclick="return delchk();" href="cancel.jsp?ticketing_id=<%=rs.getString("ticketing_id")%>&schedule_id=<%=rs.getString("schedule_id")%>"><button>예매 취소</button></a></div>
 			</div>

@@ -35,17 +35,26 @@ try{
 	ResultSet rs = pstmt.executeQuery();
 	
 	while(rs.next()){
+	%>
+		<span class="loging"><%= rs.getString("name") %> 님</span>
+	<%
+	}
+	String sql1 = "SELECT * FROM Client WHERE client_id='"+id+"'";
+	PreparedStatement pstmt1 = conn.prepareStatement(sql1);
+	ResultSet rs1 = pstmt1.executeQuery();
+
+	while(rs1.next()){
 		%>
 		<div class="new">
 		<fieldset>
             <legend>회원 정보 조회</legend>
-            <label><span>아이디<span class="required">*</span></span> <%= rs.getString("client_id") %></label>
-            <label><span>비밀번호<span class="required">*</span></span> <%= rs.getString("client_pwd") %></label>
-	        <label><span>메일주소<span class="required">*</span></span> <%= rs.getString("address") %></label>
-	        <label><span>이름<span class="required">*</span></span> <%= rs.getString("name") %></label>
-	        <label><span>주민등록번호<span class="required">*</span></span> <%= rs.getString("num1") %>- *******</label>
-	        <label><span>휴대폰번호<span class="required">*</span></span> <%= rs.getString("phone_num") %></label>
-	        <label><span>마일리지<span class="required">*</span></span> <%= rs.getString("mileage") %></label>
+            <label><span class="inf">아이디<span class="required">*</span></span> <%= rs1.getString("client_id") %></label>
+            <label><span class="inf">비밀번호<span class="required">*</span></span> <%= rs1.getString("client_pwd") %></label>
+	        <label><span class="inf">메일주소<span class="required">*</span></span> <%= rs1.getString("address") %></label>
+	        <label><span class="inf">이름<span class="required">*</span></span> <%= rs1.getString("name") %></label>
+	        <label><span class="inf">주민등록번호<span class="required">*</span></span> <%= rs1.getString("num1") %>- *******</label>
+	        <label><span class="inf">휴대폰번호<span class="required">*</span></span> <%= rs1.getString("phone_num") %></label>
+	        <label><span class="inf">마일리지<span class="required">*</span></span> <%= rs1.getString("mileage") %></label>
 	   </fieldset>
 		<div class="btn">
 	         <a href="update.jsp"><button class="btn1">수정</button></a>
@@ -57,7 +66,7 @@ try{
 	<%
 	}
 	rs.close();
-			
+	rs1.close();
 	
 
 }catch(Exception e){

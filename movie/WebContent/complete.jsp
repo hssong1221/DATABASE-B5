@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>콱씨네마 - 예매완료</title>
+<link href="./style/complete.css" type="text/css" rel="stylesheet" />
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready( function() {
@@ -38,13 +39,9 @@
 		ResultSet rs = stmt.executeQuery();
 		while(rs.next()){
 		%>
-			<h2><%= rs.getString("name") %> 님이 로그인 하셨습니다.</h2><br/>
-			<a href="output.jsp">내 정보 보러가기</a>
-			<a href="index.jsp">로그아웃</a><br/><br/>
-			
+			<span class="loging"><%= rs.getString("name") %> 님</span>
 		<%
 		}
-		
 
 		
 		String sql1 = "update seat_schedule set status = 1 where schedule_id = '" + schedule_id + "' and seat_id = some(select seat_id from seat natural join seat_schedule natural join seat_before where schedule_id = '" + schedule_id + "')";
@@ -71,10 +68,15 @@
 	    
 	    
 			rs.close();%>
-			<h3>예매가 완료되었습니다.</h3><br/>
-			<%=(int)(total_price*0.03)%> 마일리지가  적립됐습니다. <br/>
-			<a href = "ticketing_list.jsp">예매내역</a>
-			<a href = "main.jsp">메인으로</a>
+
+		<div class="new">
+		<fieldset><legend>예매완료</legend>
+			<span class="inf">예매가 완료되었습니다.</span><br/><br/>
+			<span ><%=(int)(total_price*0.1)%><span> <span class="inf">마일리지가  적립됐습니다.<span> <br/><br/><br/>
+			<a href = "ticketing_list.jsp"><button>예매내역</button></a>
+			<a href = "main.jsp"><button>메인으로</button></a>
+		</fieldset>
+
 	<% }catch(Exception e){
 	    out.print("연결에 실패하였습니다.");
 	    e.printStackTrace();
@@ -84,8 +86,7 @@
 	}
 	
 %>
-<br/><br/>
-
+</div>
 </div>
 </body>
 <div id=footer></div>

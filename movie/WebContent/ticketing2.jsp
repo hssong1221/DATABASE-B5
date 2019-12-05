@@ -48,12 +48,12 @@
 <%
 		while(rs.next()){
 		%>
-			<p class="loging"><%= rs.getString("name") %> 님</p>
+			<span class="loging"><%= rs.getString("name") %> 님</span>
 		<%}%>
 			<div class="new">
 			<fieldset><legend>예매</legend>
-		<label><span>선택한 날짜 :</span> <%=date%></label>
-		<label><span>선택한 영화 :</span> <%=title%></label>
+		<label><span class="inf">선택한 날짜 :</span> <%=date%></label>
+		<label><span class="inf">선택한 영화 :</span> <%=title%></label>
 		
 <%		
 	 	while(rs1.next()&&rs2.next()){%>

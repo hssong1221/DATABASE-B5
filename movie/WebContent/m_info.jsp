@@ -31,7 +31,8 @@
 		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 		conn = ds.getConnection();
 		
-		
+
+		String id = (String)session.getAttribute("id");
 		String moviepage = request.getParameter("moviepage");
 		String rating = "0";
 		int count = 0;
@@ -40,6 +41,15 @@
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			
+			String sql1 = "SELECT * FROM client WHERE client_id='"+id+"'";
+			PreparedStatement stmt1 = conn.prepareStatement(sql1);
+			ResultSet rs1 = stmt1.executeQuery();
+			while(rs1.next()){
+			%>
+				<span class="loging"><%= rs1.getString("name") %> 님</span>
+			<%
+			}
+
 			String sql2 = "SELECT * FROM review WHERE movie_id = '"+ moviepage +"'";
 			PreparedStatement stmt2 = conn.prepareStatement(sql2);
 			ResultSet rs2 = stmt2.executeQuery();
@@ -62,7 +72,7 @@
 				}
 			}
 			
-			
+			rs1.close();
 			rs3.close();
 			rs4.close();
 			while(rs.next()){

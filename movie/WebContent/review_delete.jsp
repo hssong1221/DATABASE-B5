@@ -20,8 +20,9 @@
 		//값 받아오기
 		//변수들 선언
 		String id = "";
-		String review_id = request.getParameter("REVIEW_ID");
+		String review_id = request.getParameter("id");
 		String select_id = "";
+		String moviep = request.getParameter("moviepage");
 		//db 연결
 		Connection conn= null;
 		Context init = new InitialContext();
@@ -34,7 +35,7 @@
 				%>
 				<script>
 				alert("로그인 해주세요!");
-				history.back(-1);
+				location.href="m_info.jsp?moviepage=<%=moviep%>";
 				</script>
 				<% 
 			}
@@ -45,7 +46,11 @@
 				stmt3.executeUpdate();
 				
 				%>
-				<script>alert("관리자 권한으로 삭제하였습니다.")</script>
+				<script>
+				alert("관리자 권한으로 삭제하였습니다.")
+				location.href="m_info.jsp?moviepage=<%=moviep%>";
+				</script>
+				
 				<% 
 			}
 			else {
@@ -66,7 +71,7 @@
 							%>
 							<script>
 							alert("리뷰가 삭제되었습니다.");
-							history.back(-1);
+							location.href="m_info.jsp?moviepage=<%=moviep%>";
 							</script>
 							<% 
 							}
@@ -74,7 +79,7 @@
 							%>
 							<script>
 							alert("작성자가 일치하지 않습니다.");
-							history.back(-1);
+							location.href="m_info.jsp?moviepage=<%=moviep%>";
 							</script>
 							<% 
 						}

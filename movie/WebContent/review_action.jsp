@@ -66,7 +66,7 @@
 					if (Arrays.asList(movie).contains(moviep)) {
 						//일치하면 sql로 리뷰 db에 업로드
 						try {
-							String sql2 = "INSERT INTO review VALUES (?,?,?,?)";
+							String sql2 = "INSERT INTO review VALUES (review_id_seq.nextval,?,?,?,?)";
 							PreparedStatement stmt2 = conn.prepareStatement(sql2);
 							stmt2.setString(1, id);
 							stmt2.setString(2, moviep);

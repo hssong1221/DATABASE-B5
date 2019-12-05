@@ -56,7 +56,7 @@
 					ResultSet rs = stmt.executeQuery();
 					while (rs.next()) {
 						select_id = rs.getString("client_id");
-
+						sysout
 						if (id.equals(select_id)) {
 							 
 							String sql2 = "delete from review where review_id = ?";

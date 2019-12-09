@@ -21,7 +21,7 @@
 		//변수들 선언
 		String id = "";
 		String select_id = "";
-		String review_id = request.getParameter("REVIEW_ID");
+		String review_id = request.getParameter("id");
 		
 		//db 연결
 		Connection conn= null;

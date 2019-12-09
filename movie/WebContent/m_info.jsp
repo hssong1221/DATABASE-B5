@@ -143,6 +143,7 @@
 					 | <%=rs2.getString("RATING") %>  점
 			</div>
 			<div class="review"> <%=rs2.getString("CONTENT") %></div>
+			
 			<button type="button" onclick ="location.href='review_delete.jsp?id=<%= rs2.getString("REVIEW_ID")%>'">삭제</button>
 			<button type="button" onclick ="location.href='review_modify.jsp?id=<%= rs2.getString("REVIEW_ID")%>'">수정</button>
 			<hr />

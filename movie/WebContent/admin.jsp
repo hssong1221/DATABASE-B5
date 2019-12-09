@@ -265,36 +265,48 @@
 			   	String month3 = request.getParameter("month3");
 				String day3 = request.getParameter("day3");
 				String date3 = "19/" + month3 + "/" + day3;
-				String sql5 = "select client_id, title ,pay_num, total_price from payment natural join ticketing natural join schedule natural join movie where paydate = '" + date3 + "'";
+				String sql5 = "select * from payment natural join ticketing natural join schedule natural join movie where paydate = '" + date3 + "' order by ticketing_id";
 				PreparedStatement stmt5 = conn.prepareStatement(sql5);
 				ResultSet rs5 = stmt5.executeQuery();
+
+
+				String sql6 = "select ticketing_id, LISTAGG(seat_name,', ') within group (order by seat_name) name from ticketing natural join ticketing_seat natural join seat natural join payment where paydate = '" + date3 + "' group by ticketing_id order by ticketing_id";
+				PreparedStatement stmt6 = conn.prepareStatement(sql6);
+				ResultSet rs6 = stmt6.executeQuery();
+
+
 				if(month3!=null&&day3!=null){	
 			%>
 					<table border = "1">
-						<caption><%= month3 %>월 <%= day3 %>일 매출 리스트</caption>
+						<caption><%= month3 %>월 <%= day3 %>일 예매 리스트</caption>
 					<thead>
 						<tr>	
-							<th>결제번호</th>
+							<th>예매번호</th>
 							<th>고객 아이디</th>
 							<th>영화제목</th>
-							<th>결제가격</th>
+							<th>영화상영날짜</th>
+							<th>시작시간</th>
+							<th>상영관번호</th>
+							<th>좌석번호</th>
 						</tr>
 					</thead>
 					<tbody>	
 				<%
-
-					
-						while(rs5.next()){ %>
+						while(rs5.next()&&rs6.next()){ %>
 						<tr>
-							<td><%= rs5.getString("pay_num")%></td>
+							<td><%= rs5.getString("ticketing_id")%></td>
 							<td><%= rs5.getString("client_id")%></td>
 							<td><%= rs5.getString("title")%></td>
-							<td><%= rs5.getString("total_price")%></td>
+							<td><%= rs5.getString("screening_date")%></td>
+							<td><%= rs5.getString("start_time")%></td>
+							<td><%= rs5.getString("theater_num")%></td>
+							<td><%= rs6.getString("name") %></td>
 						</tr>
 			<%	
 						}
 				}
 				rs5.close(); 
+				rs6.close();
 	%>
 						</tbody>
 					</table>

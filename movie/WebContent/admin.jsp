@@ -328,17 +328,20 @@
 				</thead>
 				<tbody>		
 			<% 
-				while(rs2.next()){ %> 
-				<tr>
-					<td><%= rs2.getString("client_id") %></td>
-					<td><%= rs2.getString("num1") %></td>
-					<td><%= rs2.getString("phone_num") %></td>
-					<td><%= rs2.getString("mileage") %></td>
-					<td><%= rs2.getString("name") %></td>
-					<td><%= rs2.getString("address") %></td>
-				</tr>
+				while(rs2.next()){ %>
+				<% if (!rs2.getString("client_id").equals("admin")){
+				%> 
+					<tr>
+						<td><%= rs2.getString("client_id") %></td>
+						<td><%= rs2.getString("num1") %></td>
+						<td><%= rs2.getString("phone_num") %></td>
+						<td><%= rs2.getString("mileage") %></td>
+						<td><%= rs2.getString("name") %></td>
+						<td><%= rs2.getString("address") %></td>
+					</tr>
 				<%	
 					}
+				}
 				%>		
 					</tbody>
 				</table>

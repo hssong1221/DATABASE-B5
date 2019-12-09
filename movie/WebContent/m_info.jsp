@@ -79,6 +79,9 @@
 	%>
 		<div class="new">
 			<img class="movie" width = "30%" src="image\<%=rs.getString("movie_id")%>.jpg"/>
+			<video controls autoplay loop width = "40%" style = "float: right;margin-right:100px;margin-top:50px;">
+			   <source src="video\<%=rs.getString("movie_id")%>.mp4" type="video/mp4"> 
+			</video>
 			<div class="information">
 				<label><span>영화제목 :</span> <%=rs.getString("title")%> </label>
 				<label><span>감독 : </span><%=rs.getString("director")%> </label>

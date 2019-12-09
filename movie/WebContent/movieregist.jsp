@@ -32,22 +32,21 @@
         String actor = request.getParameter("ACTOR");
         String grade = request.getParameter("GRADE");
         String genre = request.getParameter("GENRE");
-        String rating = request.getParameter("RATING");
-        String booking_rate = request.getParameter("BOOKING_RATE");
+        String booking_rate = "0";
         String run_time = request.getParameter("RUN_TIME");
         String plot = request.getParameter("PLOT");
         String movie_id = request.getParameter("MOVIE_ID");
         
         try{
-        	String sql = "INSERT INTO MOVIE (title,director,actor,grade,genre,rating,booking_rate,run_time,plot,movie_id)" + 
-                    "values('" + title + "','" + director + "','" + actor + "','" + grade + "','" + genre + "','" + rating + "','" + booking_rate + "','" + run_time + "','" + plot + "','" + movie_id + "')";
+        	String sql = "INSERT INTO MOVIE (title,director,actor,grade,genre,booking_rate,run_time,plot,movie_id)" + 
+                    "values('" + title + "','" + director + "','" + actor + "','" + grade + "','" + genre + "',"  + booking_rate + ",'" + run_time + "','" + plot + "','" + movie_id + "')";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.executeUpdate();
 	%>
-		<p>
-			영화를 등록하였습니다.<br/>
-			<a href = "admin.jsp">돌아가기</a>
-		</p>		
+		<script>
+			alert("영화가 추가되었습니다");
+			location.href = "admin.jsp";
+		</script>		
 	<%
 			stmt.close();
 		}catch(Exception e){

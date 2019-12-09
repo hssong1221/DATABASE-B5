@@ -47,7 +47,7 @@ try{
 	ResultSet rs1 = stmt.executeQuery();
 	
 	
-	String sql1 = "select schedule_id, ticketing_id, total_price, screening_date, title,theater_num,start_time from payment natural join ticketing natural join schedule natural join movie WHERE client_id='"+id+"' order by ticketing_id";
+	String sql1 = "select schedule_id, ticketing_id, total_price, screening_date, title,theater_num,start_time,paydate from payment natural join ticketing natural join schedule natural join movie WHERE client_id='"+id+"' order by ticketing_id";
 	stmt = conn.prepareStatement(sql1);
 	rs = stmt.executeQuery();
 	String sql2 = "select ticketing_id, LISTAGG(seat_name,', ') within group (order by seat_name) name from ticketing natural join ticketing_seat natural join seat natural join payment where client_id = '"+ id +"' group by ticketing_id order by ticketing_id";
@@ -63,11 +63,18 @@ try{
 			                 <br/>
 			<%do{%>
 			<div class="movie">
+				<%
+				String date = rs.getString("paydate");
+				String month = date.substring(3,5);
+				String day = date.substring(6);
+				%>
 				<label><span class="inf">상영관</span>   <%=rs.getString("theater_num")%> </label>
 				<label><span class="inf">좌석번호</span> 
 								<%=rs1.getString("name")%> 
 							
 				</label>
+				<label><span class="inf">결제날짜 </span> <%=month%>/<%=day%> </label>
+
 				<label><span class="inf">상영일</span>	<%=rs.getString("screening_date")%>  </label>
 				<label><span class="inf">시작시간 </span> <%=rs.getString("start_time")%>  </label>
 				<label><span class="inf">영화제목 </span> <%=rs.getString("title")%>   </label>

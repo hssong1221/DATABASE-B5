@@ -120,15 +120,15 @@
 				        </select>
 				        월
 				 		<select name="day">
-				            <option value="1">1</option>
-				            <option value="2">2</option>
-				            <option value="3" >3</option>
-				            <option value="4">4</option>
-				            <option value="5">5</option>
-				            <option value="6">6</option>
-				            <option value="7">7</option>
-				            <option value="8">8</option>
-				            <option value="9">9</option>
+				            <option value="01">1</option>
+				            <option value="02">2</option>
+				            <option value="03" >3</option>
+				            <option value="04">4</option>
+				            <option value="05">5</option>
+				            <option value="06">6</option>
+				            <option value="07">7</option>
+				            <option value="08">8</option>
+				            <option value="09">9</option>
 				            <option value="10">10</option>
 				            <option value="11">11</option>
 				            <option value="12">12</option>
@@ -227,15 +227,15 @@
 				        </select>
 				        월
 				 		<select name="day3">
-				            <option value="1">1</option>
-				            <option value="2">2</option>
-				            <option value="3" >3</option>
-				            <option value="4">4</option>
-				            <option value="5">5</option>
-				            <option value="6">6</option>
-				            <option value="7">7</option>
-				            <option value="8">8</option>
-				            <option value="9">9</option>
+				            <option value="01">1</option>
+				            <option value="02">2</option>
+				            <option value="03" >3</option>
+				            <option value="04">4</option>
+				            <option value="05">5</option>
+				            <option value="06">6</option>
+				            <option value="07">7</option>
+				            <option value="08">8</option>
+				            <option value="09">9</option>
 				            <option value="10">10</option>
 				            <option value="11">11</option>
 				            <option value="12">12</option>
@@ -261,6 +261,55 @@
 				        </select>일
 				        <button type = "submit" value = "선택">선택</button>	        
 					</form>
+					<%
+			   	String month3 = request.getParameter("month3");
+				String day3 = request.getParameter("day3");
+				String date3 = "19/" + month3 + "/" + day3;
+				String sql5 = "select * from payment natural join ticketing natural join schedule natural join movie where paydate = '" + date3 + "' order by ticketing_id";
+				PreparedStatement stmt5 = conn.prepareStatement(sql5);
+				ResultSet rs5 = stmt5.executeQuery();
+
+
+				String sql6 = "select ticketing_id, LISTAGG(seat_name,', ') within group (order by seat_name) name from ticketing natural join ticketing_seat natural join seat natural join payment where paydate = '" + date3 + "' group by ticketing_id order by ticketing_id";
+				PreparedStatement stmt6 = conn.prepareStatement(sql6);
+				ResultSet rs6 = stmt6.executeQuery();
+
+
+				if(month3!=null&&day3!=null){	
+			%>
+					<table border = "1">
+						<caption><%= month3 %>월 <%= day3 %>일 예매 리스트</caption>
+					<thead>
+						<tr>	
+							<th>예매번호</th>
+							<th>고객 아이디</th>
+							<th>영화제목</th>
+							<th>영화상영날짜</th>
+							<th>시작시간</th>
+							<th>상영관번호</th>
+							<th>좌석번호</th>
+						</tr>
+					</thead>
+					<tbody>	
+				<%
+						while(rs5.next()&&rs6.next()){ %>
+						<tr>
+							<td><%= rs5.getString("ticketing_id")%></td>
+							<td><%= rs5.getString("client_id")%></td>
+							<td><%= rs5.getString("title")%></td>
+							<td><%= rs5.getString("screening_date")%></td>
+							<td><%= rs5.getString("start_time")%></td>
+							<td><%= rs5.getString("theater_num")%></td>
+							<td><%= rs6.getString("name") %></td>
+						</tr>
+			<%	
+						}
+				}
+				rs5.close(); 
+				rs6.close();
+	%>
+						</tbody>
+					</table>
 				</fieldset>
 			</div>
 			<div class="client_information">
@@ -279,17 +328,20 @@
 				</thead>
 				<tbody>		
 			<% 
-				while(rs2.next()){ %> 
-				<tr>
-					<td><%= rs2.getString("client_id") %></td>
-					<td><%= rs2.getString("num1") %></td>
-					<td><%= rs2.getString("phone_num") %></td>
-					<td><%= rs2.getString("mileage") %></td>
-					<td><%= rs2.getString("name") %></td>
-					<td><%= rs2.getString("address") %></td>
-				</tr>
+				while(rs2.next()){ %>
+				<% if (!rs2.getString("client_id").equals("admin")){
+				%> 
+					<tr>
+						<td><%= rs2.getString("client_id") %></td>
+						<td><%= rs2.getString("num1") %></td>
+						<td><%= rs2.getString("phone_num") %></td>
+						<td><%= rs2.getString("mileage") %></td>
+						<td><%= rs2.getString("name") %></td>
+						<td><%= rs2.getString("address") %></td>
+					</tr>
 				<%	
 					}
+				}
 				%>		
 					</tbody>
 				</table>
@@ -299,21 +351,8 @@
 			<% 
 			rs2.close();
 			%>
-				<%
-			   	String month3 = request.getParameter("month3");
-				String day3 = request.getParameter("day3");
-				String date3 = "19/" + month3 + "/" + day3;
-				String sql5 = "select client_id, title ,paydate from payment natural join ticketing natural join schedule natural join movie where paydate = '" + date3 + "'";
-				PreparedStatement stmt5 = conn.prepareStatement(sql5);
-				ResultSet rs5 = stmt5.executeQuery();
-				while(rs5.next()){ %>
-					<%= rs5.getString("client_id")%>
-					<%= rs5.getString("title")%>
-					<%= rs5.getString("paydate")%>
-					<br />
-	<%	
-				}
-				rs5.close(); 
+
+	<%
 		}catch(Exception e){
 		    out.print("연결에 실패하였습니다.");
 		    e.printStackTrace();

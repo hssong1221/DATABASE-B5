@@ -359,12 +359,12 @@
 			
 			while(rs7.next()){%>
 				<%= rs7.getString("staff_id") %>
-				<%= rs7.getString("name") %>
-				<%= rs7.getString("num1") %>
-				<%= rs7.getString("num2") %>
-				<%= rs7.getString("phone_num") %>
-				<%= rs7.getString("address") %>
-				<%= rs7.getString("position") %>
+				<%= rs7.getString("s_name") %>
+				<%= rs7.getString("s_num1") %>
+				<%= rs7.getString("s_num2") %>
+				<%= rs7.getString("s_phone_num") %>
+				<%= rs7.getString("s_address") %>
+				<%= rs7.getString("s_position") %>
 				<%= rs7.getString("area") %>
 		<% 	}
 			rs7.close();

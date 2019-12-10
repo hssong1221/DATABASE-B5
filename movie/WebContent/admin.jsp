@@ -351,8 +351,24 @@
 			<% 
 			rs2.close();
 			%>
-
-	<%
+			
+		<% 
+			String sql7 = "select * from staff";
+			PreparedStatement stmt7 = conn.prepareStatement(sql7);
+			ResultSet rs7 = stmt7.executeQuery();
+			
+			while(rs7.next()){%>
+				<%= rs7.getString("staff_id") %>
+				<%= rs7.getString("name") %>
+				<%= rs7.getString("num1") %>
+				<%= rs7.getString("num2") %>
+				<%= rs7.getString("phone_num") %>
+				<%= rs7.getString("address") %>
+				<%= rs7.getString("position") %>
+				<%= rs7.getString("area") %>
+		<% 	}
+			rs7.close();
+			
 		}catch(Exception e){
 		    out.print("연결에 실패하였습니다.");
 		    e.printStackTrace();

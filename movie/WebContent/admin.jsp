@@ -377,13 +377,19 @@
 				<tr>
 					<td><%= rs7.getString("staff_id") %></td>
 					<td><%= rs7.getString("s_name") %></td>
-					<td><%= rs7.getString("s_num1") %>  - <%= rs7.getString("num2") %></td>
+					<td><%= rs7.getString("s_num1") %>  - <%= rs7.getString("s_num2") %></td>
 					<td><%= rs7.getString("s_phone_num") %></td>
 					<td><%= rs7.getString("s_address") %></td>
 					<td><%= rs7.getString("s_position") %></td>
 					<td><%= rs7.getString("area") %></td>
 				</tr>
 		<% 	}
+		%>
+				</tbody>
+				</table>
+				</fieldset>
+			</div>	
+		<%
 			rs7.close();
 			
 		}catch(Exception e){

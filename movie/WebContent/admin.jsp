@@ -209,7 +209,7 @@
 			</div>
 		
 			<div id = "dtlist">
-				<fieldset><legend>결제일로 알아보는 손놈들의 예매 실황 생중계</legend>
+				<fieldset><legend>결제일로 알아보는 손님들의 예매 현황</legend>
 					<form action="#dtlist">
 						<select name="month3">
 				            <option value="1">1</option>

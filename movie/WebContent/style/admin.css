@@ -84,14 +84,16 @@ input{
 .addmovie{
 	float:left;
 }
-.client_information{
+.client_information .staff_information{
 	float:left;
 	margin-left:10px; 
+	margin-right:10px;
 }
 
 #money,#mmoney,#dtlist{
 	float:left;
 	margin-left:10px; 
+	margin-right:10px;
 }
 .mainbtn{
 	margin-top: auto;

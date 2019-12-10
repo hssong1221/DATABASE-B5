@@ -351,21 +351,38 @@
 			<% 
 			rs2.close();
 			%>
-			
+		
+			<div class="staff_information">
+			<fieldset><legend>직원 정보</legend>
+
+			<table id = "stafftable" border = "1">
+				<thead>
+					<tr>	
+						<th>직원ID</th>
+						<th>이름</th>
+						<th>주민번호</th>
+						<th>전화번호</th>
+						<th>주소</th>
+						<th>직책</th>
+						<th>담당구역</th>
+					</tr>
+				</thead>
+				<tbody>		
 		<% 
 			String sql7 = "select * from staff";
 			PreparedStatement stmt7 = conn.prepareStatement(sql7);
 			ResultSet rs7 = stmt7.executeQuery();
 			
 			while(rs7.next()){%>
-				<%= rs7.getString("staff_id") %>
-				<%= rs7.getString("s_name") %>
-				<%= rs7.getString("s_num1") %>
-				<%= rs7.getString("s_num2") %>
-				<%= rs7.getString("s_phone_num") %>
-				<%= rs7.getString("s_address") %>
-				<%= rs7.getString("s_position") %>
-				<%= rs7.getString("area") %>
+				<tr>
+					<td><%= rs7.getString("staff_id") %></td>
+					<td><%= rs7.getString("s_name") %></td>
+					<td><%= rs7.getString("s_num1") %>  - <%= rs7.getString("num2") %></td>
+					<td><%= rs7.getString("s_phone_num") %></td>
+					<td><%= rs7.getString("s_address") %></td>
+					<td><%= rs7.getString("s_position") %></td>
+					<td><%= rs7.getString("area") %></td>
+				</tr>
 		<% 	}
 			rs7.close();
 			

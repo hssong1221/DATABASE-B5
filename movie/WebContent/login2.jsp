@@ -98,7 +98,12 @@
 			history.back(-1);
 		</script>
 	<%}
-
+	else if(isduplicate(id)&&isduplicatenum(num1,num2)){%>
+		<script>
+			alert("이미 존재하는 ID나 회원입니다.");
+			history.back(-1);
+		</script>
+	<%}
 	else{
 		request.getSession().setAttribute("id", id);
 	

@@ -384,6 +384,12 @@
 					<td><%= rs7.getString("area") %></td>
 				</tr>
 		<% 	}
+		%>
+				</tbody>
+				</table>
+				</fieldset>
+			</div>	
+		<%
 			rs7.close();
 			
 		}catch(Exception e){

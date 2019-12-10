@@ -8,7 +8,7 @@
 
 function validate() {
     //event.preventDefault();
-    var objID = document.getElementById("my_id");
+    var objID = document.getElementById("id");
     var objPwd1 = document.getElementById("my_pwd");
     var objPwd2 = document.getElementById("my_pwd2");
     var objEmail = document.getElementById("my_mail");
@@ -39,6 +39,7 @@ function validate() {
         objID.focus();
         return false;
     }
+
     //아이디 유효성 검사
     //내가 입력한 데이터를 검사하는 check()
     //만약 내가 아이디에 정규화 방식을 하나라도 지키지 않으면 if문 안으로 들어가서 alert message를 띄움

@@ -7,13 +7,48 @@
     <title>콱 씨네마 - 회원가입</title>
     <script src = "js/join.js"></script>
     <link href="./style/join.css" type="text/css" rel="stylesheet" />
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript">
     $(document).ready( function() {
         $("#head").load("./style/head.html");
         $("#footer").load("./style/footer.html");
-    });
-    </script>
+	});
+
+	var xhr=null;
+ 
+ 	function getXHR(){
+  		if(window.XMLHttpRequest){
+   		//IE 7.0이상,Chrome,Firefox,Safari,....
+   			return new XMLHttpRequest();
+  		}else{
+   		//IE 하위버젼(6.0이하)
+   			return new ActiveXObject("Microsoft.XMLHTTP");
+  		}
+ 	}
+ 
+ 	function idCheck(){
+  		xhr=getXHR();
+  		xhr.onreadystatechange=getResult;
+  		var id=document.getElementById("id").value;
+  		xhr.open("get","idcheck.jsp?id="+id,true);
+  		xhr.send(null);
+ 		}
+ 
+ 	function getResult(){
+  		if(xhr.readyState==4 && xhr.status==200){
+   			var xml=xhr.responseXML;
+   			var re=xml.getElementsByTagName("result")[0].firstChild.nodeValue;
+   
+   		if(re=='true'){
+    		//span에 결과 출력하기
+    		document.getElementById("idcheck").innerHTML="이미 사용중인 아이디 입니다.";
+   		}else{
+    		document.getElementById("idcheck").innerHTML="중복되지 않는 아이디 입니다.";
+   		}
+  	}	
+}
+</script>
+
 </head>
     <div id="head" > </div>
 
@@ -28,8 +63,10 @@
 
 				<fieldset><legend>회원가입</legend>
 	                <label class="rowtext"><span>아이디<span class="required">*</span></span>
-	                    <input class="text" type="text" name="my_id" id="my_id" size="30" maxlength="12"
+	                    <input class="text" type="text" name="id" id="id" size="30" maxlength="12"
 	                        placeholder="4~12자의 영문 대소문자와 숫자로만 입력"  required/>
+                        <input type="button" onclick="idCheck()" value="중복체크"/>
+                        <div id="idcheck"></div>
 	                </label>
 	
 	                <label class="rowtext"><span>비밀번호<span class="required">*</span></span>

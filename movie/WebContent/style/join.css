@@ -1,49 +1,7 @@
-/* .text{
-    color: #555;
-      text-shadow: 0 1px #FFF;      
-      padding: 6px 45px 6px 0px;
-      border: 1px solid #888;
-      border: 2px solid transparent;
-      border-radius: 4px;
-      outline: none;
-      background-color: fade(#FFF, 80%);
-      
+#idcheck{
+  color:red;
+  font-size: 10pt;
 }
-.text:hover:focus{
-  background-color: #FFF;
-}
-.text:focus{
-  border-color:green;
-}
-.new{
-  background-color: #dff1d7;
-  
-  border-radius: 4px;
-  
-  box-shadow: 0 0 5px 1px #333;
-  width: 100%;
-  max-width: 450px;
-  
-  padding: 20px;
-  margin: 0 auto;
-  
-  position: relative;
-  top: 100%;
-}
-.title{
-  font-weight: bold; 
-  font-size: 18px;
-  text-align: center;
-  padding-bottom: 10px;
-}
-.rowtext{
-  font-weight: bold;
-  padding-top: 10px;
-}
-
-
-
-*/
 
 .join-logo{
   width:100px;
@@ -114,7 +72,7 @@ legend{
 	color:red;
 	font-weight:normal;
 }
-.new input{
+.text{
 	padding: 5px 8px 5px 8px;
 	 border: 1px solid #888;
       border: 2px solid transparent;

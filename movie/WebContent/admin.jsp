@@ -71,12 +71,12 @@
 			<div>
 	<% 
 			while(rs.next()){
-	%>		
+	%>		<span class="moviespan">
 			<%= rs.getString("movie_id") %>
 			<a href = "m_info.jsp?moviepage=<%= rs.getString("movie_id")%>">
 				<img class="movieimg"  src="image\<%=rs.getString("movie_id")%>.jpg" />
 			</a>
-			
+			</span>
 	<%	}
 	%>		</div>
 

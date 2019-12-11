@@ -35,6 +35,7 @@
  		}
  
  	function getResult(){
+ 		var id=document.getElementById("id").value;
   		if(xhr.readyState==4 && xhr.status==200){
    			var xml=xhr.responseXML;
    			var re=xml.getElementsByTagName("result")[0].firstChild.nodeValue;
@@ -42,7 +43,8 @@
    		if(re=='true'){
     		//span에 결과 출력하기
     		document.getElementById("idcheck").innerHTML="이미 사용중인 아이디 입니다.";
-   		}else{
+   		}
+   		else{
     		document.getElementById("idcheck").innerHTML="중복되지 않는 아이디 입니다.";
    		}
   	}	

@@ -313,6 +313,7 @@
 					</table>
 				</fieldset>
 			</div>
+
 			<div class="client_information">
 			<fieldset><legend>고객 정보</legend>
 
@@ -324,7 +325,7 @@
 						<th>전화번호</th>
 						<th>마일리지</th>
 						<th>이름</th>
-						<th>주소</th>
+						<th>이메일주소</th>
 					</tr>
 				</thead>
 				<tbody>		

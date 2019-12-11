@@ -35,6 +35,7 @@
 			<li><a href = #money>날짜별 수익</a></li>
 			<li><a href = #mmoney>월별 수익</a></li>
 			<li><a href = #dtlist>결제일 기준 예매 리스트</a></li>
+			<li><a href = #stafftable>직원 정보</a></li>
 		</ul>
 	</nav>
 	</div>

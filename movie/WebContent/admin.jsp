@@ -35,6 +35,7 @@
 			<li><a href = #money>날짜별 수익</a></li>
 			<li><a href = #mmoney>월별 수익</a></li>
 			<li><a href = #dtlist>결제일 기준 예매 리스트</a></li>
+			<li><a href = #stafftable>직원 정보</a></li>
 		</ul>
 	</nav>
 	</div>
@@ -312,6 +313,7 @@
 					</table>
 				</fieldset>
 			</div>
+
 			<div class="client_information">
 			<fieldset><legend>고객 정보</legend>
 
@@ -323,7 +325,7 @@
 						<th>전화번호</th>
 						<th>마일리지</th>
 						<th>이름</th>
-						<th>주소</th>
+						<th>이메일주소</th>
 					</tr>
 				</thead>
 				<tbody>		

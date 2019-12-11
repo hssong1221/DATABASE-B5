@@ -84,6 +84,7 @@
 			</video>
 			<div class="information">
 				<label><span>영화제목 :</span> <%=rs.getString("title")%> </label>
+				<label><span>개봉일 :</span> <%=rs.getString("opendate")%> </label>
 				<label><span>감독 : </span><%=rs.getString("director")%> </label>
 				<label><span>배우 : </span><%=rs.getString("actor")%> </label>
 				<label><span>상영등급 :</span> <%=rs.getString("grade")%> </label>

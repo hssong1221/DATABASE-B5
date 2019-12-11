@@ -38,8 +38,8 @@
         String movie_id = request.getParameter("MOVIE_ID");
         
         try{
-        	String sql = "INSERT INTO MOVIE (title,director,actor,grade,genre,booking_rate,run_time,plot,movie_id)" + 
-                    "values('" + title + "','" + director + "','" + actor + "','" + grade + "','" + genre + "',"  + booking_rate + ",'" + run_time + "','" + plot + "','" + movie_id + "')";
+        	String sql = "INSERT INTO MOVIE (title,director,actor,grade,genre,booking_rate,run_time,plot,movie_id,opendate)" + 
+                    "values('" + title + "','" + director + "','" + actor + "','" + grade + "','" + genre + "',"  + booking_rate + ",'" + run_time + "','" + plot + "','" + movie_id + "','20191211')";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.executeUpdate();
 	%>

@@ -100,9 +100,11 @@
 				<a href = "ticketing.jsp"><button>예매</button></a>
 				<span class="loging"><%= rs.getString("name") %> 님</span>
 				</div>
-<% 			}
+<% 			}%>
+			<div style="text-align:center;">
+			<h1>현재상영작</h1>
 			
-			String sql3 = "select * from movie";
+<%			String sql3 = "select * from movie where opendate <= TO_CHAR(SYSDATE,'YYYYMMDD')";
 			stmt = conn.prepareStatement(sql3);
 			rs = stmt.executeQuery();
 			while(rs.next()){
@@ -133,13 +135,50 @@
 	
 
 
- </div>
-  	<%	} 
+ 			</div>
+  	<%	} %>
+  		</div>
+  		<div style = "clear:both;text-align:center;">
+  			<h1>상영예정작</h1>
+ <%			String sql4 = "select * from movie where opendate > TO_CHAR(SYSDATE,'YYYYMMDD')";
+			stmt = conn.prepareStatement(sql4);
+			rs = stmt.executeQuery();
+			while(rs.next()){
+				rate(rs.getString("movie_id"));
+%>				
+			<div class='movie'>
+					<a href ="m_info.jsp?moviepage=<%= rs.getString("movie_id")%>"><img class='poster'  src="image\<%=rs.getString("movie_id")%>.jpg"/></a>
+					<p class='rating'><strong>예매율 : <%=rs.getString("booking_rate")%></strong></p>
+					<p class='title'>
+	<%				String age = rs.getString("grade");				
+					if(age.equals("전체")) { %>
+						<img class='age' src='./style/all.png'/>
+	<% 				}
+					else if( age.equals("12세")) { %>
+						<img class='age' src='./style/12.png' />
+	<% 				}
+					else if( age.equals("15세")) { %>
+						<img class='age' src='./style/15.png' />
+	<% 				}
+					else{									%>
+						<img class='age' src='./style/19.png' />
+	<%				} 
+		
+	%>
+					<%=rs.getString("title") %></p> 
+					<p class='genre'><%=rs.getString("genre") %></p>
+		
+	
+
+
+ 			</div>
+  	<%	} %>
+ 		</div> 
   		 	
 			
 
 
-			rs.close();
+<% 			rs.close();
 			
 			
 		}%>

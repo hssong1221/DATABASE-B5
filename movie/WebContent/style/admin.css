@@ -1,7 +1,10 @@
 
 .addmovie,.client_information, .staff_information ,#money,#mmoney,#dtlist{
-	margin: 0 auto;
 	display: inline-block;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px; 
 }
 
 
@@ -88,8 +91,7 @@ input{
 .new input:focus{
 	border-color:green;
 }
-{
-}
+
 
 
 .mainbtn{

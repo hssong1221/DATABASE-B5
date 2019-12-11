@@ -78,7 +78,7 @@ body{
 .maindiv{
     background-image: url('back.png');
     background-repeat: no-repeat;
-    background-size:60% 80%;
+    background-size:300px 200px;
     background-position: right; 
 
 }

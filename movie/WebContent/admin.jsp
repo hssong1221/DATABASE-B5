@@ -66,8 +66,8 @@
 
 
 
-			<p id = "nowmovie">현재 상영중인 영화</p>
-
+			<h2 id = "nowmovie">상영/개봉예정 영화</h2>
+			
 			<div>
 	<% 
 			while(rs.next()){

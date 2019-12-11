@@ -1,4 +1,11 @@
 
+.addmovie,.client_information, .staff_information ,#money,#mmoney,#dtlist{
+	margin: 0 auto;
+	display: inline-block;
+}
+
+
+
 .movieimg{
 	width:250px;
 	overflow:hidden;
@@ -81,20 +88,10 @@ input{
 .new input:focus{
 	border-color:green;
 }
-.addmovie{
-	float:left;
-}
-.client_information .staff_information{
-	float:left;
-	margin-left:10px; 
-	margin-right:10px;
+{
 }
 
-#money,#mmoney,#dtlist{
-	float:left;
-	margin-left:10px; 
-	margin-right:10px;
-}
+
 .mainbtn{
 	margin-top: auto;
 	clear:both;

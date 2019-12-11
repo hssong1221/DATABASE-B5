@@ -7,7 +7,9 @@
 	margin-bottom: 10px; 
 }
 
-
+.moviespan{
+	float: left;
+}
 
 .movieimg{
 	width:250px;

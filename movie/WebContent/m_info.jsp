@@ -50,7 +50,7 @@
 			<%
 			}
 
-			String sql2 = "SELECT * FROM review WHERE movie_id = '"+ moviepage +"'";
+			String sql2 = "SELECT * FROM review WHERE movie_id = '"+ moviepage +"' order by review_id desc";
 			PreparedStatement stmt2 = conn.prepareStatement(sql2);
 			ResultSet rs2 = stmt2.executeQuery();
 			
@@ -79,20 +79,20 @@
 	%>
 		<div class="new">
 			<img class="movie" width = "30%" src="image\<%=rs.getString("movie_id")%>.jpg"/>
-			<video controls autoplay loop width = "40%" style = "float: right;margin-right:100px;margin-top:50px;">
+			<video controls autoplay loop width = "50%" style = "float: right;margin-right:100px;margin-top:50px;">
 			   <source src="video\<%=rs.getString("movie_id")%>.mp4" type="video/mp4"> 
 			</video>
 			<div class="information">
-				<label><span>영화제목 :</span> <%=rs.getString("title")%> </label>
-				<label><span>개봉일 :</span> <%=rs.getString("opendate")%> </label>
-				<label><span>감독 : </span><%=rs.getString("director")%> </label>
-				<label><span>배우 : </span><%=rs.getString("actor")%> </label>
-				<label><span>상영등급 :</span> <%=rs.getString("grade")%> </label>
-				<label><span>장르 : </span><%=rs.getString("genre")%> </label>
-				<label><span>평점 : </span><%=rating%></label>
-				<label><span>예매율 : </span><%=rs.getString("booking_rate")%> </label>
-				<label><span>상영시간 : </span><%=rs.getString("run_time")%> </label>
-				<label><span>줄거리 : </span><%=rs.getString("plot")%> </label>
+				<label><span><strong>영화제목 :</strong></span> <%=rs.getString("title")%> </label>
+				<label><span><strong>개봉일 :</strong></span> <%=rs.getString("opendate")%> </label>
+				<label><span><strong>감독 : </strong></span><%=rs.getString("director")%> </label>
+				<label><span><strong>배우 : </strong></span><%=rs.getString("actor")%> </label>
+				<label><span><strong>상영등급 :</strong></span> <%=rs.getString("grade")%> </label>
+				<label><span><strong>장르 : </strong></span><%=rs.getString("genre")%> </label>
+				<label><span><strong>평점 : </strong></span><%=rating%></label>
+				<label><span><strong>예매율 : </strong></span><%=rs.getString("booking_rate")%> </label>
+				<label><span><strong>상영시간 :</strong> </span><%=rs.getString("run_time")%> </label>
+				<label><span><strong>줄거리 : </strong></span><%=rs.getString("plot")%> </label>
 			</div>
 			
 		</div>
@@ -149,7 +149,7 @@
 			<div class="review"> <%=rs2.getString("CONTENT") %></div>
 			
 			<button type="button" onclick ="location.href='review_delete.jsp?id=<%= rs2.getString("REVIEW_ID")%>&moviepage=<%= moviepage %>'">삭제</button>
-			<button type="button" onclick ="location.href='review_modify.jsp?id=<%= rs2.getString("REVIEW_ID")%>&moviepage=<%= moviepage %>'">수정</button>
+			
 
 			<hr />
 			

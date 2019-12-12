@@ -72,11 +72,11 @@
 	                </label>
 	
 	                <label class="rowtext"><span>비밀번호<span class="required">*</span></span>
-	                    <input class="text" type="text" id="my_pwd" name="my_pwd" size="30" maxlength="12" placeholder="4~12자의 영문 대소문자와 숫자로만 입력" required />
+	                    <input class="text" type="password" id="my_pwd" name="my_pwd" size="30" maxlength="12" placeholder="4~12자의 영문 대소문자와 숫자로만 입력" required />
 	                </label>
 	
 	                <label class="rowtext"><span>비밀번호 확인<span class="required">*</span></span>
-	                    <input class="text" type="text" id="my_pwd2" name="my_pwd2" size="30" maxlength="12" placeholder="4~12자의 영문 대소문자와 숫자로만 입력" required /> 
+	                    <input class="text" type="password" id="my_pwd2" name="my_pwd2" size="30" maxlength="12" placeholder="4~12자의 영문 대소문자와 숫자로만 입력" required /> 
 	                </label>
 	
 	                <label class="rowtext"><span>메일주소<span class="required">*</span></span>

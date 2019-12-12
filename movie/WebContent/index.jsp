@@ -13,11 +13,16 @@
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript">
 		$(document).ready( function() {
-			$("#head").load("./style/head.html");
+			
 			$("#footer").load("./style/footer.html");
 		});
 		</script>
 	</head>
+	<div class='logodiv'>
+			<a href = "index.jsp"><img  class='logo' src='./style/logo.png' /></a>
+			<img  class='logo1' src='./style/hak.png' />
+		</div>
+			<hr class='logohr'/>
 <div id=head></div>
 	<body>
 		<div class="maindiv">
